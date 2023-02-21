@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6269811993162495623}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AllStalagmites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 6733069040653852931}
   - component: {fileID: 6733069040653852932}
   - component: {fileID: 6733069040653852933}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TunnelWithStalagmites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1961,7 +1961,7 @@ GameObject:
   - component: {fileID: 6733069041152175088}
   - component: {fileID: 6733069041152175089}
   - component: {fileID: 6733069041152175090}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arch (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3758,10 +3758,8 @@ MonoBehaviour:
   m_VersionIndex: 5801
   m_IsSelectable: 1
   m_SelectedFaces: 
-  m_SelectedEdges:
-  - a: 0
-    b: 0
-  m_SelectedVertices: 0000000000000000
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!114 &6733069041152175103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3870,6 +3868,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalagmites
       objectReference: {fileID: 0}
+    - target: {fileID: 128068226101081487, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 853787582250440183, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533539676011095344, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6210354844841058386, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3914,6 +3924,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9206869895913661948, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
 --- !u!4 &1313707589536354503 stripped
@@ -3931,6 +3945,18 @@ PrefabInstance:
     - target: {fileID: 128068226101081487, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
       propertyPath: m_Name
       value: Stalagmites (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 128068226101081487, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 853787582250440183, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533539676011095344, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6210354844841058386, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
       propertyPath: m_RootOrder
@@ -3976,6 +4002,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9206869895913661948, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
 --- !u!4 &819433363506169230 stripped
@@ -3993,6 +4023,18 @@ PrefabInstance:
     - target: {fileID: 128068226101081487, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
       propertyPath: m_Name
       value: Stalagmites (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 128068226101081487, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 853787582250440183, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533539676011095344, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6210354844841058386, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
       propertyPath: m_RootOrder
@@ -4038,6 +4080,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9206869895913661948, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
 --- !u!4 &819433363391773902 stripped
@@ -4055,6 +4101,18 @@ PrefabInstance:
     - target: {fileID: 128068226101081487, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
       propertyPath: m_Name
       value: Stalagmites (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 128068226101081487, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 853787582250440183, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533539676011095344, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6210354844841058386, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
       propertyPath: m_RootOrder
@@ -4099,6 +4157,10 @@ PrefabInstance:
     - target: {fileID: 6210354844841058386, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206869895913661948, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250cfa93a9c6c2a4f8e47027779676aa, type: 3}
