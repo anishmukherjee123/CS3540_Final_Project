@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // code adapted from: https://www.youtube.com/watch?v=tAJLiOEfbQg
 public class Climbing : MonoBehaviour
@@ -9,10 +10,14 @@ public class Climbing : MonoBehaviour
     public Rigidbody rb;
     public LayerMask whatIsWall;
 
+    [Header("StaminaSettings")]
+    public float climbStamina = 10.0f;
+
+    public Slider climbStaminaBar;
+
     [Header("ClimbJump")]
     public KeyCode climbJumpKey = KeyCode.Space;
     public float climbJumpSpeed = 5.0f;
-    public float climbJumpDistance = 5.0f;
 
     public float climbSpeed;
     private bool climbing;
@@ -25,9 +30,14 @@ public class Climbing : MonoBehaviour
 
     PlayerController pc;
 
+    float currentStamina;
+
     void Start()
     {
         pc = FindObjectOfType<PlayerController>();
+        climbStaminaBar.gameObject.SetActive(false);
+        climbStaminaBar.value = climbStamina;
+        currentStamina = climbStamina;
     }
 
     // Update is called once per frame
@@ -37,9 +47,36 @@ public class Climbing : MonoBehaviour
         StateMachine();
         if (climbing)
         {
+            CountdownStamina();
             ClimbingMovement();
             HandleClimbJump();
         }
+        else if (pc.grounded)
+        {
+            ResetStamina();
+        }
+    }
+
+    private void CountdownStamina()
+    {
+        if (currentStamina <= 0)
+        {
+            Debug.Log("ran out of stamina");
+            StopClimbing();
+        }
+        else
+        {
+            currentStamina -= Time.deltaTime;
+            climbStaminaBar.value = currentStamina;
+            Debug.Log("counting down stamina: " + currentStamina);
+        }
+    }
+
+    private void ResetStamina()
+    {
+        Debug.Log("Stamina reset");
+        currentStamina = climbStamina;
+        climbStaminaBar.value = climbStamina;
     }
 
     private void StateMachine()
@@ -70,6 +107,8 @@ public class Climbing : MonoBehaviour
         climbing = true;
         pc.climbing = true;
         rb.useGravity = false;
+        climbStaminaBar.gameObject.SetActive(true);
+
         // no longer going to slide down the wall
 
         // camera fov changing
@@ -107,7 +146,7 @@ public class Climbing : MonoBehaviour
         climbing = false;
         pc.climbing = false;
         rb.useGravity = true;
-
+        climbStaminaBar.gameObject.SetActive(false);
         // some effect when we are done climbing
     }
 }
