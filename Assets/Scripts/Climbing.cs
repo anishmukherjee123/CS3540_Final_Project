@@ -9,24 +9,23 @@ public class Climbing : MonoBehaviour
     public Rigidbody rb;
     public LayerMask whatIsWall;
 
+    [Header("Controls")]
+    public KeyCode climbKey = KeyCode.Space;
+
     public float climbSpeed;
     private bool climbing;
 
-    // jumping
-    public float climbJumpUpForce;
-    public KeyCode jumpKey = KeyCode.Space;
-
     public float detectionLength;
     public float sphereCastRadius;
-    public float maxWallLookAngle;
-    private float wallLookAngle;
 
     private RaycastHit frontWallHit;
     private bool wallFront;
 
+    PlayerController pc;
+
     void Start()
     {
-
+        pc = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -34,50 +33,73 @@ public class Climbing : MonoBehaviour
     {
         WallCheck();
         StateMachine();
-
-        if (climbing) ClimbingMovement();
+        if (climbing)
+        {
+            ClimbingMovement();
+        }
     }
 
     private void StateMachine()
     {
-        if (wallFront && Input.GetKey(KeyCode.W) && wallLookAngle < maxWallLookAngle)
+        if (wallFront && Input.GetKeyDown(climbKey))
         {
-            if (!climbing) StartClimbing();
+            Debug.Log("vertical axis input: " + Input.GetAxis("Vertical").ToString());
+            if (!climbing)
+            {
+                StartClimbing();
+            }
+
         }
         else
         {
-            if (climbing) StopClimbing();
+            if (climbing && Input.GetKeyUp(climbKey))
+            {
+                StopClimbing();
+            }
         }
-
-        if (wallFront && Input.GetKeyDown(jumpKey)) ClimbJump();
     }
 
     void WallCheck()
     {
         wallFront = Physics.SphereCast(transform.position, sphereCastRadius, orientation.forward, out frontWallHit, detectionLength, whatIsWall);
-        wallLookAngle = Vector3.Angle(orientation.forward, -frontWallHit.normal);
     }
 
     private void StartClimbing()
     {
         climbing = true;
+        pc.climbing = true;
+        rb.useGravity = false;
+        // no longer going to slide down the wall
+
+        // camera fov changing
+
+        // set up a climbing timer with a graphic like BOtW
     }
 
     private void ClimbingMovement()
     {
-        rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
+        float verticalInput = Input.GetAxisRaw("Vertical");
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        // align our movement axes with the wall we are climbing
+        Vector3 horizontalAxis = Vector3.Cross(frontWallHit.normal, orientation.up);
+        Vector3 verticalAxis = Vector3.Cross(frontWallHit.normal, orientation.right);
+
+        Vector3 moveDirection = verticalAxis * verticalInput * -1 + horizontalAxis * horizontalInput;
+        rb.velocity = moveDirection * climbSpeed;
+
+        // rb.velocity = Vector3.up * verticalInput * climbSpeed;
     }
 
     private void StopClimbing()
     {
         climbing = false;
-    }
+        pc.climbing = false;
+        rb.useGravity = true;
 
-    private void ClimbJump()
-    {
-        Vector3 forceToApply = transform.up * climbJumpUpForce + frontWallHit.normal;
+        Debug.Log("stopped climbing");
 
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        rb.AddForce(forceToApply, ForceMode.Impulse);
+        // some effect when we are done climbing
     }
 }
+

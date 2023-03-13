@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9032971783687925650}
   - component: {fileID: 9032971783687925652}
   - component: {fileID: 9032971783687925653}
-  - component: {fileID: 9032971783687925655}
+  - component: {fileID: 3283302699658923275}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -77,7 +77,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &9032971783687925655
+--- !u!114 &3283302699658923275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,12 +94,11 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 128
-  climbSpeed: 10
-  climbJumpUpForce: 6
+  climbSpeed: 2
+  climbJumpUpForce: 2
   jumpKey: 32
   detectionLength: 0.7
   sphereCastRadius: 0.25
-  maxWallLookAngle: 30
 --- !u!1 &9032971783779760622
 GameObject:
   m_ObjectHideFlags: 3

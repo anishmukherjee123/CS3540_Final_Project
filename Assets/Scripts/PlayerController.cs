@@ -7,23 +7,28 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
+    private float moveSpeed;
+    public float walkSpeed;
+    public float climbSpeed;
+    public float sprintSpeed;
     public float groundDrag;
+
+    [Header("Jumping")]
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
-
+    public float sprintingAirMultiplier;
     bool readyToJump;
 
-    public float walkSpeed;
-    public float sprintSpeed;
-
+    [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode sprintKey = KeyCode.LeftShift;
 
     public float playerHeight;
     public LayerMask whatIsGround;
     public Transform orientation;
     bool grounded;
+    public bool climbing;
 
     float horizontalInput;
     float verticalInput;
@@ -31,6 +36,17 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+
+
+    public enum MovementState
+    {
+        walking,
+        climbing,
+        sprinting,
+        air
+    }
+
+    public MovementState state;
 
     private void Start()
     {
@@ -46,6 +62,7 @@ public class PlayerController : MonoBehaviour
 
         MyInput();
         SpeedControl();
+        StateHandler();
 
         // handle drag
         if (grounded)
@@ -56,7 +73,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (!climbing)
+        {
+            MovePlayer();
+        }
     }
 
     private void MyInput()
@@ -74,10 +94,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void StateHandler()
+    {
+        if (grounded && Input.GetKey(sprintKey))
+        {
+            state = MovementState.sprinting;
+            moveSpeed = sprintSpeed;
+        }
+        else if (grounded)
+        {
+            state = MovementState.walking;
+            moveSpeed = walkSpeed;
+        }
+        else if (climbing)
+        {
+            state = MovementState.climbing;
+            moveSpeed = climbSpeed;
+        }
+        else
+        {
+            state = MovementState.air;
+        }
+    }
+
     private void MovePlayer()
     {
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
         if (grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
@@ -104,7 +148,10 @@ public class PlayerController : MonoBehaviour
         // reset y velocity before applying force
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        if (!climbing)
+        {
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        }
     }
     private void ResetJump()
     {
