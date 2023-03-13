@@ -9,8 +9,10 @@ public class Climbing : MonoBehaviour
     public Rigidbody rb;
     public LayerMask whatIsWall;
 
-    [Header("Controls")]
-    public KeyCode climbKey = KeyCode.Space;
+    [Header("ClimbJump")]
+    public KeyCode climbJumpKey = KeyCode.Space;
+    public float climbJumpSpeed = 5.0f;
+    public float climbJumpDistance = 5.0f;
 
     public float climbSpeed;
     private bool climbing;
@@ -36,23 +38,22 @@ public class Climbing : MonoBehaviour
         if (climbing)
         {
             ClimbingMovement();
+            HandleClimbJump();
         }
     }
 
     private void StateMachine()
     {
-        if (wallFront && Input.GetKeyDown(climbKey))
+        if (wallFront && Input.GetMouseButtonDown(1) && !climbing)
         {
-            Debug.Log("vertical axis input: " + Input.GetAxis("Vertical").ToString());
             if (!climbing)
             {
                 StartClimbing();
             }
-
         }
         else
         {
-            if (climbing && Input.GetKeyUp(climbKey))
+            if ((climbing && Input.GetMouseButtonDown(1)))
             {
                 StopClimbing();
             }
@@ -88,7 +89,17 @@ public class Climbing : MonoBehaviour
         Vector3 moveDirection = verticalAxis * verticalInput * -1 + horizontalAxis * horizontalInput;
         rb.velocity = moveDirection * climbSpeed;
 
-        // rb.velocity = Vector3.up * verticalInput * climbSpeed;
+        rb.velocity -= frontWallHit.normal * 0.9f;
+    }
+
+    private void HandleClimbJump()
+    {
+        if (Input.GetKeyDown(climbJumpKey))
+        {
+            StopClimbing();
+            Vector3 verticalAxis = Vector3.Cross(frontWallHit.normal, orientation.right);
+            rb.AddForce((-1 * verticalAxis * climbJumpSpeed) - (frontWallHit.normal * 0.2f), ForceMode.Impulse);
+        }
     }
 
     private void StopClimbing()
@@ -96,8 +107,6 @@ public class Climbing : MonoBehaviour
         climbing = false;
         pc.climbing = false;
         rb.useGravity = true;
-
-        Debug.Log("stopped climbing");
 
         // some effect when we are done climbing
     }

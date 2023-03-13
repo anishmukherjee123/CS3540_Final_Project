@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     public Transform orientation;
-    bool grounded;
+    public bool grounded;
     public bool climbing;
 
     float horizontalInput;
