@@ -9,11 +9,14 @@ public class ThirdPersonCam : MonoBehaviour
     public Transform playerObj;
     public float rotationSpeed;
 
+    private PlayerController pc;
+
     void Start()
     {
         // make cursor invisible
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        pc = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame

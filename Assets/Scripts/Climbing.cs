@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // code adapted from: https://www.youtube.com/watch?v=tAJLiOEfbQg
 public class Climbing : MonoBehaviour
@@ -9,24 +10,34 @@ public class Climbing : MonoBehaviour
     public Rigidbody rb;
     public LayerMask whatIsWall;
 
+    [Header("StaminaSettings")]
+    public float climbStamina = 10.0f;
+
+    public Slider climbStaminaBar;
+
+    [Header("ClimbJump")]
+    public KeyCode climbJumpKey = KeyCode.Space;
+    public float climbJumpSpeed = 5.0f;
+
     public float climbSpeed;
     private bool climbing;
 
-    // jumping
-    public float climbJumpUpForce;
-    public KeyCode jumpKey = KeyCode.Space;
-
     public float detectionLength;
     public float sphereCastRadius;
-    public float maxWallLookAngle;
-    private float wallLookAngle;
 
     private RaycastHit frontWallHit;
     private bool wallFront;
 
+    PlayerController pc;
+
+    float currentStamina;
+
     void Start()
     {
-
+        pc = FindObjectOfType<PlayerController>();
+        climbStaminaBar.gameObject.SetActive(false);
+        climbStaminaBar.value = climbStamina;
+        currentStamina = climbStamina;
     }
 
     // Update is called once per frame
@@ -34,50 +45,109 @@ public class Climbing : MonoBehaviour
     {
         WallCheck();
         StateMachine();
+        if (climbing)
+        {
+            CountdownStamina();
+            ClimbingMovement();
+            HandleClimbJump();
+        }
+        else if (pc.grounded)
+        {
+            ResetStamina();
+        }
+    }
 
-        if (climbing) ClimbingMovement();
+    private void CountdownStamina()
+    {
+        if (currentStamina <= 0)
+        {
+            Debug.Log("ran out of stamina");
+            StopClimbing();
+        }
+        else
+        {
+            currentStamina -= Time.deltaTime;
+            climbStaminaBar.value = currentStamina;
+            Debug.Log("counting down stamina: " + currentStamina);
+        }
+    }
+
+    private void ResetStamina()
+    {
+        Debug.Log("Stamina reset");
+        currentStamina = climbStamina;
+        climbStaminaBar.value = climbStamina;
     }
 
     private void StateMachine()
     {
-        if (wallFront && Input.GetKey(KeyCode.W) && wallLookAngle < maxWallLookAngle)
+        if (wallFront && Input.GetMouseButtonDown(1) && !climbing)
         {
-            if (!climbing) StartClimbing();
+            if (!climbing)
+            {
+                StartClimbing();
+            }
         }
         else
         {
-            if (climbing) StopClimbing();
+            if ((climbing && Input.GetMouseButtonDown(1)))
+            {
+                StopClimbing();
+            }
         }
-
-        if (wallFront && Input.GetKeyDown(jumpKey)) ClimbJump();
     }
 
     void WallCheck()
     {
         wallFront = Physics.SphereCast(transform.position, sphereCastRadius, orientation.forward, out frontWallHit, detectionLength, whatIsWall);
-        wallLookAngle = Vector3.Angle(orientation.forward, -frontWallHit.normal);
     }
 
     private void StartClimbing()
     {
         climbing = true;
+        pc.climbing = true;
+        rb.useGravity = false;
+        climbStaminaBar.gameObject.SetActive(true);
+
+        // no longer going to slide down the wall
+
+        // camera fov changing
+
+        // set up a climbing timer with a graphic like BOtW
     }
 
     private void ClimbingMovement()
     {
-        rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
+        float verticalInput = Input.GetAxisRaw("Vertical");
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        // align our movement axes with the wall we are climbing
+        Vector3 horizontalAxis = Vector3.Cross(frontWallHit.normal, orientation.up);
+        Vector3 verticalAxis = Vector3.Cross(frontWallHit.normal, orientation.right);
+
+        Vector3 moveDirection = verticalAxis * verticalInput * -1 + horizontalAxis * horizontalInput;
+        rb.velocity = moveDirection * climbSpeed;
+
+        rb.velocity -= frontWallHit.normal * 0.9f;
+    }
+
+    private void HandleClimbJump()
+    {
+        if (Input.GetKeyDown(climbJumpKey))
+        {
+            StopClimbing();
+            Vector3 verticalAxis = Vector3.Cross(frontWallHit.normal, orientation.right);
+            rb.AddForce((-1 * verticalAxis * climbJumpSpeed) - (frontWallHit.normal * 0.2f), ForceMode.Impulse);
+        }
     }
 
     private void StopClimbing()
     {
         climbing = false;
-    }
-
-    private void ClimbJump()
-    {
-        Vector3 forceToApply = transform.up * climbJumpUpForce + frontWallHit.normal;
-
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        rb.AddForce(forceToApply, ForceMode.Impulse);
+        pc.climbing = false;
+        rb.useGravity = true;
+        climbStaminaBar.gameObject.SetActive(false);
+        // some effect when we are done climbing
     }
 }
+
