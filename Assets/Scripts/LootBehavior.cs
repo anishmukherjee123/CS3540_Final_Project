@@ -13,7 +13,7 @@ public class LootBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.forward, 90 * Time.deltaTime);
+        transform.Rotate(Vector3.up, 90 * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
