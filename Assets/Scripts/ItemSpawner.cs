@@ -28,9 +28,21 @@ public class ItemSpawner : MonoBehaviour
         foreach(GameObject spawnPoint in spawnPoints)
         {
             int r = Random.Range(1, 100);
-            if(r <= 20)
+            if(r <= 40)
             {
-
+                Instantiate(healthPickup, spawnPoint.transform.position, Quaternion.identity);
+            }
+            else if(r > 40 && r <= 60)
+            {
+                Instantiate(attackPickup, spawnPoint.transform.position, Quaternion.identity);
+            }
+            else if (r > 60 && r <= 80)
+            {
+                Instantiate(armorPickup, spawnPoint.transform.position, Quaternion.identity);
+            }
+            else if (r > 80)
+            {
+                Instantiate(timePickup, spawnPoint.transform.position, Quaternion.identity);
             }
         }
     }
