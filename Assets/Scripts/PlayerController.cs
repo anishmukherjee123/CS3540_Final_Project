@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
+    public float attackCooldown = 1.0f;
 
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -32,11 +33,12 @@ public class PlayerController : MonoBehaviour
 
     float horizontalInput;
     float verticalInput;
-
     Vector3 moveDirection;
-
     Rigidbody rb;
+    bool readyToAttack;
 
+    [Header("Animations")]
+    public Animator animator;
 
     public enum MovementState
     {
@@ -45,14 +47,27 @@ public class PlayerController : MonoBehaviour
         sprinting,
         air
     }
+    public enum AnimState
+    {
+        Idle,
+        Attack,
+        ClimbingUp,
+        ClimbingDown,
+        Jump,
+        Running,
+        Dead
+    }
 
     public MovementState state;
+    AnimState animState;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animState = AnimState.Idle;
 
         readyToJump = true;
+        readyToAttack = true;
     }
 
     private void Update()
@@ -63,6 +78,7 @@ public class PlayerController : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
+        AnimHandler();
 
         // handle drag
         if (grounded)
@@ -79,19 +95,60 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void AnimHandler()
+    {
+        switch (animState)
+        {
+            case AnimState.Attack:
+                animator.SetInteger("animState", 1);
+                break;
+            case AnimState.ClimbingUp:
+                animator.SetInteger("animState", 3);
+                break;
+            case AnimState.ClimbingDown:
+                animator.SetInteger("animState", 4);
+                break;
+            case AnimState.Jump:
+                animator.SetInteger("animState", 7);
+                break;
+            case AnimState.Running:
+                animator.SetInteger("animState", 2);
+                break;
+            case AnimState.Dead:
+                animator.SetInteger("animState", 6);
+                break;
+            case AnimState.Idle:
+                animator.SetInteger("animState", 0);
+                break;
+            default:
+                break;
+        }
+    }
+
     private void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
+        if (Input.GetMouseButtonDown(0) && readyToAttack && grounded && !climbing)
+        {
+            Attack();
+            readyToAttack = false;
+            Invoke(nameof(ResetAttack), attackCooldown);
+        }
+
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             Jump();
-
             readyToJump = false;
-
             Invoke(nameof(ResetJump), jumpCooldown);
         }
+
+        if (horizontalInput == 0 && verticalInput == 0 && grounded && readyToAttack && !climbing)
+        {
+            animState = AnimState.Idle;
+        }
+
     }
 
     private void StateHandler()
@@ -110,10 +167,12 @@ public class PlayerController : MonoBehaviour
         {
             state = MovementState.climbing;
             moveSpeed = climbSpeed;
+            animState = AnimState.ClimbingUp;
         }
         else
         {
             state = MovementState.air;
+            animState = AnimState.Jump;
         }
     }
 
@@ -122,8 +181,9 @@ public class PlayerController : MonoBehaviour
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if (grounded)
+        if (grounded && readyToAttack)
         {
+            animState = AnimState.Running;
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         }
         else if (!grounded)
@@ -153,8 +213,19 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
     }
+
+    private void Attack()
+    {
+        animState = AnimState.Attack;
+    }
+
     private void ResetJump()
     {
         readyToJump = true;
+    }
+
+    private void ResetAttack()
+    {
+        readyToAttack = true;
     }
 }
