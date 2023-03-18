@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-// code adapted from : https://www.youtube.com/watch?v=UCwwn2q4Vys
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
@@ -36,6 +35,7 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection;
     Rigidbody rb;
     bool readyToAttack;
+    public bool playerAlive;
 
     [Header("Animations")]
     public Animator animator;
@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
 
         readyToJump = true;
         readyToAttack = true;
+        playerAlive = true;
     }
 
     private void Update()
@@ -75,10 +76,13 @@ public class PlayerController : MonoBehaviour
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
-        MyInput();
-        SpeedControl();
-        StateHandler();
-        AnimHandler();
+        if (playerAlive)
+        {
+            MyInput();
+            SpeedControl();
+            StateHandler();
+            AnimHandler();
+        }
 
         // handle drag
         if (grounded)
@@ -89,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!climbing)
+        if (!climbing && playerAlive)
         {
             MovePlayer();
         }
@@ -201,6 +205,14 @@ public class PlayerController : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+    }
+
+    public void KillPlayer()
+    {
+        // play death animation
+        animState = AnimState.Dead;
+        animator.SetInteger("animState", 6);
+        playerAlive = false;
     }
 
     private void Jump()
