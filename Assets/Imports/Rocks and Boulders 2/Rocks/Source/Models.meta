@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: 93a38d549583d7e44bd4097713c54b3f
 folderAsset: yes
+<<<<<<< HEAD
 timeCreated: 1472336054
 licenseType: Store
 DefaultImporter:
+=======
+DefaultImporter:
+  externalObjects: {}
+>>>>>>> 1c050ee (Added old boss scene)
   userData: 
   assetBundleName: 
   assetBundleVariant: 
