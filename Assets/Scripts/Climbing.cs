@@ -10,6 +10,7 @@ public class Climbing : MonoBehaviour
     public Rigidbody rb;
     public LayerMask whatIsWall;
     public GameObject climbingOverParticle;
+    public GameObject climbingLight;
 
     [Header("StaminaSettings")]
     public float climbStamina = 10.0f;
@@ -38,6 +39,7 @@ public class Climbing : MonoBehaviour
         climbStaminaBar.gameObject.SetActive(false);
         climbStaminaBar.value = climbStamina;
         currentStamina = climbStamina;
+        climbingLight.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -109,6 +111,9 @@ public class Climbing : MonoBehaviour
 
         // rotate the player to be facing the wall
         transform.rotation = Quaternion.LookRotation(-1 * frontWallHit.normal);
+
+        // enable light when climbing
+        climbingLight.gameObject.SetActive(true);
     }
 
     private void ClimbingMovement()
@@ -142,7 +147,8 @@ public class Climbing : MonoBehaviour
         pc.climbing = false;
         rb.useGravity = true;
         climbStaminaBar.gameObject.SetActive(false);
-        // some effect when we are done climbing
+        // turn off point light when done climbing
+        climbingLight.gameObject.SetActive(false);
     }
 }
 

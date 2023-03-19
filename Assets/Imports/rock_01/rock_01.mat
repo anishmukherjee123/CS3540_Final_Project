@@ -8,13 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: rock_01
-  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
-  m_ValidKeywords:
+  m_Shader: {fileID: 4800000, guid: 33cb4e8ff0c1d43ac8ec40692656c7ed, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _EMISSION
   - _NORMALMAP
   - _PARALLAXMAP
   - _SPECGLOSSMAP
-  m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -42,11 +42,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0.06, y: 0.06}
+        m_Offset: {x: 0, y: 0}
+    - _FirstTex:
+        m_Texture: {fileID: 2800000, guid: a170b06388a656c4f90ecdf0f17ab23e, type: 3}
+        m_Scale: {x: 0.06, y: 0.06}
+        m_Offset: {x: 10, y: 20}
+    - _FourthTex:
+        m_Texture: {fileID: 2800000, guid: b19a6df8780af77468f23753b5b17340, type: 3}
+        m_Scale: {x: 0.09, y: 0.09}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: a170b06388a656c4f90ecdf0f17ab23e, type: 3}
-        m_Scale: {x: 2, y: 2}
+        m_Scale: {x: 0.06, y: 0.06}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 2800000, guid: 4b3e816f4fd143041bfd381dc6a12f2f, type: 3}
@@ -56,10 +64,18 @@ Material:
         m_Texture: {fileID: 2800000, guid: 9e2f9c9f29d1a0842b144eba1f61b736, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SecondTex:
+        m_Texture: {fileID: 2800000, guid: 9e2f9c9f29d1a0842b144eba1f61b736, type: 3}
+        m_Scale: {x: 0.08, y: 0.08}
+        m_Offset: {x: 15, y: 10}
     - _SpecGlossMap:
         m_Texture: {fileID: 2800000, guid: b19a6df8780af77468f23753b5b17340, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ThirdTex:
+        m_Texture: {fileID: 2800000, guid: a170b06388a656c4f90ecdf0f17ab23e, type: 3}
+        m_Scale: {x: 0.04, y: 0.04}
+        m_Offset: {x: -10, y: 25}
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
@@ -80,7 +96,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}

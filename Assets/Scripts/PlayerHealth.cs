@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public float fadeSpeed;
     public PlayerController pc;
     float durationTimer;
-    int currentHealth;
+    public int currentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -53,11 +53,12 @@ public class PlayerHealth : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(damageSFX, transform.position);
             currentHealth -= damageAmount;
+            Mathf.Clamp(currentHealth, 0, startHealth);
             healthSlider.value = currentHealth;
             durationTimer = 0;
         }
 
-        if (currentHealth <= 0)
+        if (currentHealth == 0)
         {
             PlayerDies();
         }
