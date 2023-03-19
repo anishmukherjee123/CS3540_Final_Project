@@ -103,8 +103,8 @@ public class BossBehavior : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //damages the player
-            var playerHealth = other.GetComponent<PlayerHealth>();
-            playerHealth.TakeDamage(damageAmount);
+            //var playerHealth = other.GetComponent<PlayerHealth>();
+            //playerHealth.TakeDamage(damageAmount);
         }
         else if(other.CompareTag("Projectile"))
         {
