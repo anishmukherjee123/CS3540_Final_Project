@@ -9,10 +9,10 @@ public class Climbing : MonoBehaviour
     public Transform orientation;
     public Rigidbody rb;
     public LayerMask whatIsWall;
+    public GameObject climbingOverParticle;
 
     [Header("StaminaSettings")]
     public float climbStamina = 10.0f;
-
     public Slider climbStaminaBar;
 
     [Header("ClimbJump")]
@@ -61,20 +61,18 @@ public class Climbing : MonoBehaviour
     {
         if (currentStamina <= 0)
         {
-            Debug.Log("ran out of stamina");
+            Instantiate(climbingOverParticle, transform.position, transform.rotation);
             StopClimbing();
         }
         else
         {
             currentStamina -= Time.deltaTime;
             climbStaminaBar.value = currentStamina;
-            Debug.Log("counting down stamina: " + currentStamina);
         }
     }
 
     private void ResetStamina()
     {
-        Debug.Log("Stamina reset");
         currentStamina = climbStamina;
         climbStaminaBar.value = climbStamina;
     }
@@ -109,11 +107,8 @@ public class Climbing : MonoBehaviour
         rb.useGravity = false;
         climbStaminaBar.gameObject.SetActive(true);
 
-        // no longer going to slide down the wall
-
-        // camera fov changing
-
-        // set up a climbing timer with a graphic like BOtW
+        // rotate the player to be facing the wall
+        transform.rotation = Quaternion.LookRotation(-1 * frontWallHit.normal);
     }
 
     private void ClimbingMovement()
