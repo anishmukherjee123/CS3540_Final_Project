@@ -28,22 +28,22 @@ public class ItemSpawner : MonoBehaviour
         foreach(GameObject spawnPoint in spawnPoints)
         {
             int r = Random.Range(1, 100);
-            if(r <= 40)
+            if(r <= 10)
             {
                 GameObject health = Instantiate(healthPickup, spawnPoint.transform.position, Quaternion.identity);
                 health.transform.parent = spawnPoint.transform;
             }
-            else if(r > 40 && r <= 60)
+            else if(r > 10 && r <= 15)
             {
                 GameObject attack = Instantiate(attackPickup, spawnPoint.transform.position, Quaternion.identity);
                 attack.transform.parent = spawnPoint.transform;
             }
-            else if (r > 60 && r <= 80)
+            else if (r > 15 && r <= 20)
             {
                 GameObject defense = Instantiate(armorPickup, spawnPoint.transform.position, Quaternion.Euler(270, 0, 0));
                 defense.transform.parent = spawnPoint.transform;
             }
-            else if (r > 80)
+            else if (r > 20 && r <= 25)
             {
                 GameObject time = Instantiate(timePickup, spawnPoint.transform.position, Quaternion.Euler(0, 0, 90));
                 time.transform.parent = spawnPoint.transform;
