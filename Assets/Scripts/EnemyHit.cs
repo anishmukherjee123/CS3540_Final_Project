@@ -31,6 +31,7 @@ public class EnemyHit : MonoBehaviour
         AudioSource.PlayClipAtPoint(deathSFX, transform.position);
         anim.Play("Hit", 0);
         anim.SetInteger("animState", 3);
+        LevelManager.enemiesInLevel--;
         Destroy(gameObject, 2.25f);
     }
 }
