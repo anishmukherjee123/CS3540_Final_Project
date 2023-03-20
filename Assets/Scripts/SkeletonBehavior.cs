@@ -66,10 +66,4 @@ public class SkeletonBehavior : MonoBehaviour
     {
         readyToAttackPlayer = true;
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
-    }
 }
