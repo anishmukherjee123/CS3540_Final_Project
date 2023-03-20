@@ -7,11 +7,11 @@ public class LevelManager : MonoBehaviour
 {
 
     public string nextLevel;
-    public static int enemiesInLevel = 0;
+    public int enemiesInLevel = 0;
     // Start is called before the first frame update
     void Start()
     {
-        enemiesInLevel = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
     }
 
     // Update is called once per frame
@@ -26,7 +26,6 @@ public class LevelManager : MonoBehaviour
         {
             LoadCurrentLevel();
         }
-
     }
 
 
@@ -35,14 +34,14 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(nextLevel);
     }
 
-    public void LoadCurrentLevel()
+    void LoadCurrentLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // && enemiesInLevel == 0
+        if(other.CompareTag("Player") && enemiesInLevel == 0)
         {
             LoadNextLevel();
         }
