@@ -12,7 +12,7 @@ public class BossBehavior : MonoBehaviour
 
     GameObject[] wanderPoints;
     Vector3 nextDestination;
-    Animator anim;
+    public Animator anim;
 
     int currentDestinationIndex = 0;
 
@@ -23,20 +23,19 @@ public class BossBehavior : MonoBehaviour
     {
         //set the wander points, get the animator and set it to walking
         wanderPoints = GameObject.FindGameObjectsWithTag("WanderPoint");
-        anim = GetComponent<Animator>();
+        currentDestinationIndex = 0;
+        FindNextPoint();
+
         anim.SetInteger("animState", 4);
+
+        attackTurn = false;
+        bossDead = false;
 
         //finds the player tag if not null
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
-
-        //should make the spider walk to the first wander point, but is not working
-        FindNextPoint();
-
-        attackTurn = false;
-        bossDead = false;
 
         //will switch the attack turn throughout the level
         InvokeRepeating("SwitchTurn", 5, 5);
@@ -45,7 +44,7 @@ public class BossBehavior : MonoBehaviour
 
     void Update()
     {
-        if(attackTurn)
+        if (attackTurn)
         {
             //if the spider is attacking, will set the animation to attack
             //will also make the spider approach the player
@@ -61,14 +60,24 @@ public class BossBehavior : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, player.position, step);
             }
         }
-        else if(!attackTurn && !bossDead)
+        else if (!attackTurn && !bossDead)
         {
             //if spider is not attacking and it's not dead,
             //make it walk to the next wanderpoint
             anim.SetInteger("animState", 4);
-            FindNextPoint();
+
+            // walk to the next point if we have reached the current wanderpoint
+            if (Vector3.Distance(transform.position, nextDestination) < 0.1f)
+            {
+                FindNextPoint();
+            }
+            else
+            {
+                transform.LookAt(nextDestination);
+                transform.position = Vector3.MoveTowards(transform.position, nextDestination, moveSpeed * Time.deltaTime);
+            }
         }
-        else if(bossDead)
+        else if (bossDead)
         {
             //if the spider is dead, do the dead animation and then destroy the object
             anim.SetInteger("animState", 2);
@@ -95,6 +104,8 @@ public class BossBehavior : MonoBehaviour
     {
         nextDestination = wanderPoints[currentDestinationIndex].transform.position;
 
+        print("Next destination: " + wanderPoints[currentDestinationIndex].gameObject.name);
+
         currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
     }
 
@@ -106,7 +117,7 @@ public class BossBehavior : MonoBehaviour
             //var playerHealth = other.GetComponent<PlayerHealth>();
             //playerHealth.TakeDamage(damageAmount);
         }
-        else if(other.CompareTag("Projectile"))
+        else if (other.CompareTag("Projectile"))
         {
             //if hit by projectile, kills the boss
             //not sure what the tag for the attack weapon is, so that can be edited too
