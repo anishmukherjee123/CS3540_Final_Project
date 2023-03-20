@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.016075173, g: 0.018912628, b: 0.021964882, a: 1}
+  m_IndirectSpecularColor: {r: 0.01602986, g: 0.018923363, b: 0.021959236, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21533,6 +21533,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeleZombie
       objectReference: {fileID: 0}
+    - target: {fileID: 8456747236477669514, guid: 9f256523c6d784862b53782a24082437, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 9085931308809767472, guid: 9f256523c6d784862b53782a24082437, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -23051,15 +23055,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2576313562476462440, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.1013432
+      value: -0.10134319
       objectReference: {fileID: 0}
     - target: {fileID: 2576313562476462440, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.49303377
+      value: -0.4930338
       objectReference: {fileID: 0}
     - target: {fileID: 2576313562476462440, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.15502621
+      value: 0.15502624
       objectReference: {fileID: 0}
     - target: {fileID: 2576313562546355262, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23129,6 +23133,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.000005896234
       objectReference: {fileID: 0}
+    - target: {fileID: 2576313564284128537, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8538588
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564284128537, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.061722957
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564284128537, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.48529544
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564284128537, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.17777468
+      objectReference: {fileID: 0}
     - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0000040475784
@@ -23140,6 +23160,14 @@ PrefabInstance:
     - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.000005896234
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8446472
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.1394837
       objectReference: {fileID: 0}
     - target: {fileID: 2576313564402562620, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: overlay
@@ -24006,6 +24034,10 @@ PrefabInstance:
     - target: {fileID: 8456747236477669514, guid: 9f256523c6d784862b53782a24082437, type: 3}
       propertyPath: m_Name
       value: SkeleZombie (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456747236477669514, guid: 9f256523c6d784862b53782a24082437, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 9085931308809767472, guid: 9f256523c6d784862b53782a24082437, type: 3}
       propertyPath: m_RootOrder
@@ -25202,7 +25234,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.04763198, y: 0, z: 0, w: 0.99886495}
+  m_LocalRotation: {x: 0.047631983, y: -3.7669173e-10, z: 1.7962963e-11, w: 0.99886495}
   m_LocalPosition: {x: -49.118626, y: -59.126343, z: -24.198494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -31346,6 +31378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeleZombie (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8456747236477669514, guid: 9f256523c6d784862b53782a24082437, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 9085931308809767472, guid: 9f256523c6d784862b53782a24082437, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -34528,6 +34564,10 @@ PrefabInstance:
     - target: {fileID: 8456747236477669514, guid: 9f256523c6d784862b53782a24082437, type: 3}
       propertyPath: m_Name
       value: SkeleZombie (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456747236477669514, guid: 9f256523c6d784862b53782a24082437, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 9085931308809767472, guid: 9f256523c6d784862b53782a24082437, type: 3}
       propertyPath: m_RootOrder

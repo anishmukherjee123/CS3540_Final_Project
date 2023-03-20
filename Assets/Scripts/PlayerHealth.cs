@@ -66,6 +66,13 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void AddHealth(int healthAmount)
+    {
+        currentHealth += healthAmount;
+        Mathf.Clamp(currentHealth, 0, startHealth);
+        healthSlider.value = currentHealth;
+    }
+
     void PlayerDies()
     {
         AudioSource.PlayClipAtPoint(deadSFX, transform.position);
