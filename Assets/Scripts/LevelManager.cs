@@ -34,14 +34,14 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(nextLevel);
     }
 
-    void LoadCurrentLevel()
+    public void LoadCurrentLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && enemiesInLevel == 0)
+        if (other.CompareTag("Player") && enemiesInLevel == 0)
         {
             LoadNextLevel();
         }
