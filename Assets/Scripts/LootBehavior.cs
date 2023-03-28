@@ -7,7 +7,7 @@ public class LootBehavior : MonoBehaviour
     public AudioClip pickupSFX;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -18,7 +18,7 @@ public class LootBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("PLayer"))
+        if (other.CompareTag("Player"))
         {
             gameObject.SetActive(false);
             AudioSource.PlayClipAtPoint(pickupSFX, transform.position);
