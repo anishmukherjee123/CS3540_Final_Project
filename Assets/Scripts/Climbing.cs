@@ -49,11 +49,23 @@ public class Climbing : MonoBehaviour
         {
             CountdownStamina();
             ClimbingMovement();
+            EdgeCheck();
             HandleClimbJump();
         }
         else if (pc.grounded)
         {
             ResetStamina();
+        }
+    }
+
+    private void EdgeCheck()
+    {
+        if (!wallFront)
+        {
+            // we reached the top of the wall
+            StopClimbing();
+            // apply a force to help us get over the edge
+            rb.AddForce(Vector3.up * climbJumpSpeed * 1.5f, ForceMode.Impulse);
         }
     }
 
@@ -97,7 +109,7 @@ public class Climbing : MonoBehaviour
 
     void WallCheck()
     {
-        wallFront = Physics.SphereCast(transform.position, sphereCastRadius, orientation.forward, out frontWallHit, detectionLength, whatIsWall);
+        wallFront = Physics.Raycast(transform.position, orientation.forward, out frontWallHit, detectionLength, whatIsWall);
     }
 
     private void StartClimbing()
@@ -131,9 +143,14 @@ public class Climbing : MonoBehaviour
         if (Input.GetKeyDown(climbJumpKey))
         {
             StopClimbing();
-            Vector3 verticalAxis = Vector3.Cross(frontWallHit.normal, orientation.right);
-            rb.AddForce((-1 * verticalAxis * climbJumpSpeed) - (frontWallHit.normal * 0.2f), ForceMode.Impulse);
+            ClimbJump();
         }
+    }
+
+    private void ClimbJump()
+    {
+        Vector3 verticalAxis = Vector3.Cross(frontWallHit.normal, orientation.right);
+        rb.AddForce((-1 * verticalAxis * climbJumpSpeed) - (frontWallHit.normal * 0.2f), ForceMode.Impulse);
     }
 
     private void StopClimbing()

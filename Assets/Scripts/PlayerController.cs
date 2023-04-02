@@ -73,8 +73,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
+        // grounded on either Ground layer or ClimbingWall layer
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround | (1 << LayerMask.NameToLayer("ClimbingWall")));
 
         if (playerAlive)
         {
@@ -141,16 +141,16 @@ public class PlayerController : MonoBehaviour
             Invoke(nameof(ResetAttack), attackCooldown);
         }
 
+        if (horizontalInput == 0 && verticalInput == 0 && grounded && readyToJump && readyToAttack && !climbing)
+        {
+            animState = AnimState.Idle;
+        }
+
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             Jump();
             readyToJump = false;
             Invoke(nameof(ResetJump), jumpCooldown);
-        }
-
-        if (horizontalInput == 0 && verticalInput == 0 && grounded && readyToAttack && !climbing)
-        {
-            animState = AnimState.Idle;
         }
 
     }
@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
         }
-        else if (grounded)
+        else if (grounded && !climbing)
         {
             state = MovementState.walking;
             moveSpeed = walkSpeed;
@@ -172,6 +172,10 @@ public class PlayerController : MonoBehaviour
             state = MovementState.climbing;
             moveSpeed = climbSpeed;
             animState = AnimState.ClimbingUp;
+        }
+        else if (!readyToJump) // currently jumping
+        {
+            state = MovementState.air;
         }
         else
         {
@@ -185,7 +189,7 @@ public class PlayerController : MonoBehaviour
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if (grounded && readyToAttack)
+        if (grounded && readyToAttack && readyToJump)
         {
             animState = AnimState.Running;
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
@@ -222,6 +226,7 @@ public class PlayerController : MonoBehaviour
 
         if (!climbing)
         {
+            animState = AnimState.Jump;
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
     }
