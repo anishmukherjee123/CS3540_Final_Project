@@ -28,6 +28,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void LevelBeat() {
+        //Invoke("LoadNextLevel", 2);
+        LoadNextLevel();
+    }
+
 
     void LoadNextLevel()
     {

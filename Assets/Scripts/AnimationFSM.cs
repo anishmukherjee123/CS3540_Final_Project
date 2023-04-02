@@ -100,7 +100,7 @@ public class AnimationFSM : MonoBehaviour
     void UpdateAttackState() {
         anim.SetInteger("animState", 1);
         if(!checkAttackKey()) {
-            Invoke("changeToIdle", 2);
+            Invoke("changeToIdle", 2.5f);
         }
         // need a script for the weapon
         // prefab where it checks
@@ -125,7 +125,7 @@ public class AnimationFSM : MonoBehaviour
     void UpdateJumpState() {
         anim.SetInteger("animState", 7);
         if(!checkJumpKey()) {
-            Invoke("changeToIdle", 2);
+            Invoke("changeToIdle", 2.5f);
         }
     }
     // if can't fix the pause with switching to jump and attack animation
