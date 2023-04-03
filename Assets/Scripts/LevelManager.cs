@@ -22,10 +22,17 @@ public class LevelManager : MonoBehaviour
             LoadNextLevel();
         }
 
+        // keeping this incase the player wants to restart
+        // the level
         if (Input.GetKeyDown(KeyCode.C))
         {
             LoadCurrentLevel();
         }
+    }
+
+    public void LevelBeat() {
+        //Invoke("LoadNextLevel", 2);
+        LoadNextLevel();
     }
 
 
@@ -39,11 +46,11 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Player") && enemiesInLevel == 0)
-        {
-            LoadNextLevel();
-        }
-    }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if(other.CompareTag("Player") && enemiesInLevel == 0)
+    //     {
+    //         LoadNextLevel();
+    //     }
+    // }
 }
