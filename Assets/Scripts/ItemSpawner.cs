@@ -32,21 +32,25 @@ public class ItemSpawner : MonoBehaviour
             {
                 GameObject health = Instantiate(healthPickup, spawnPoint.transform.position, Quaternion.identity);
                 health.transform.parent = spawnPoint.transform;
+                health.GetComponent<LootBehavior>().identity = "health";
             }
             else if(r > 10 && r <= 15)
             {
                 GameObject attack = Instantiate(attackPickup, spawnPoint.transform.position, Quaternion.identity);
                 attack.transform.parent = spawnPoint.transform;
+                attack.GetComponent<LootBehavior>().identity = "attack";
             }
             else if (r > 15 && r <= 20)
             {
                 GameObject defense = Instantiate(armorPickup, spawnPoint.transform.position, Quaternion.Euler(270, 0, 0));
                 defense.transform.parent = spawnPoint.transform;
+                defense.GetComponent<LootBehavior>().identity = "defense";
             }
             else if (r > 20 && r <= 25)
             {
                 GameObject time = Instantiate(timePickup, spawnPoint.transform.position, Quaternion.Euler(0, 0, 90));
                 time.transform.parent = spawnPoint.transform;
+                time.GetComponent<LootBehavior>().identity = "time";
             }
         }
     }

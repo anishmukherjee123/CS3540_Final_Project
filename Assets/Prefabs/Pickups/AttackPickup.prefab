@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupSFX: {fileID: 8300000, guid: 86122e799a350e342af1a64e8cae47d8, type: 3}
+  identity: 
 --- !u!108 &3051230710878370237
 Light:
   m_ObjectHideFlags: 0
