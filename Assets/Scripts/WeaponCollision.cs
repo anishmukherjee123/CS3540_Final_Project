@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class WeaponCollision : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Enemy")) {
-            // enemy takes damage
-        }
-    }
+    public int damage = 35;
 }

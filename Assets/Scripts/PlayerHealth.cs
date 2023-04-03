@@ -78,6 +78,12 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
+    public void addShield(int add)
+    {
+        healthSlider.maxValue += add;
+        healthSlider.value = currentHealth;
+    }
+
     void TestDamage()
     {
         if (Input.GetKeyDown(KeyCode.Z))
