@@ -28,7 +28,7 @@ public class PlayerHit : MonoBehaviour
         {
             if (obj.gameObject.CompareTag("EnemyWeaponSkeleton"))
             {
-                ph.TakeDamage(skeletonDamage);
+                ph.TakeDamage(skeletonDamage); //remove this call and put it in the attack state of the enemy
                 damageReady = false;
                 Invoke("ResetDamageCooldown", damageCoolDown);
             }
