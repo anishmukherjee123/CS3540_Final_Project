@@ -46,12 +46,12 @@ public class ItemSpawner : MonoBehaviour
                 defense.transform.parent = spawnPoint.transform;
                 defense.GetComponent<LootBehavior>().identity = "defense";
             }
-            else if (r > 20 && r <= 25)
+            /*else if (r > 20 && r <= 25)
             {
                 GameObject time = Instantiate(timePickup, spawnPoint.transform.position, Quaternion.Euler(0, 0, 90));
                 time.transform.parent = spawnPoint.transform;
                 time.GetComponent<LootBehavior>().identity = "time";
-            }
+            }*/
         }
     }
 }
