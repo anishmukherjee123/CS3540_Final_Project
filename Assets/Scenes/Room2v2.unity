@@ -4069,7 +4069,7 @@ MonoBehaviour:
   wallDestroyedSFX: {fileID: 8300000, guid: 620dad4bb8e4b98429963b3bbe39c191, type: 3}
   wallCrackSFX: {fileID: 8300000, guid: 738e3bff6c9edfe409dcb5b68d82d66a, type: 3}
   player: {fileID: 0}
-  maxDistance: 50
+  maxDistance: 10
   lightIntensity: 3
   signal: {fileID: 624558064}
   wallCrack: {fileID: 1835240459}
