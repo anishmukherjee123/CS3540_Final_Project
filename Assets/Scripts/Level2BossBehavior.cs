@@ -1,18 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class BossBehavior : MonoBehaviour
+public class Level2BossBehavior : MonoBehaviour
 {
-
     public Transform player;
-    public float moveSpeed = 5;
+    public float moveSpeed = 10;
     public float minDistance = 0;
     public int damageAmount = 20;
     public Animator anim;
-    public AudioClip deadSFX;
 
     GameObject[] wanderPoints;
     Vector3 nextDestination;
-    BossHealth BossHealth;
+    Level2BossHealth Level2BossHealth;
     int health;
 
     int currentDestinationIndex = 0;
@@ -27,16 +28,15 @@ public class BossBehavior : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         currentDestinationIndex = 0;
 
-        BossHealth = GetComponent<BossHealth>();
-        health = BossHealth.currentHealth;
+        Level2BossHealth = GetComponent<Level2BossHealth>();
+        health = Level2BossHealth.currentHealth;
 
-        anim.SetInteger("animState", 4);
         FindNextPoint();
 
         attackTurn = false;
 
         //will switch the attack turn throughout the level
-        InvokeRepeating("SwitchTurn", 8, 5);
+        InvokeRepeating("SwitchTurn", 2, 5);
     }
 
 
@@ -45,8 +45,6 @@ public class BossBehavior : MonoBehaviour
 
         if (attackTurn)
         {
-
-            anim.SetInteger("animState", 1);
 
             float step = moveSpeed * Time.deltaTime;
 
@@ -57,26 +55,28 @@ public class BossBehavior : MonoBehaviour
                 transform.LookAt(player);
                 transform.position = Vector3.MoveTowards(transform.position, player.position, step);
             }
+
+            if (distance < 2)
+            {
+                anim.SetInteger("animState", 1);
+            }
         }
         else if (!attackTurn)
+        {
+
+            // walk to the next point if we have reached the current wanderpoint
+            if (Vector3.Distance(transform.position, nextDestination) < 0.1f)
             {
-                //if spider is not attacking and it's not dead,
-                //make it walk to the next wanderpoint
-                anim.SetInteger("animState", 4);
-
-                // walk to the next point if we have reached the current wanderpoint
-                if (Vector3.Distance(transform.position, nextDestination) < 0.1f)
-                {
-                    FindNextPoint();
-                }
-                else
-                {
-                    transform.LookAt(nextDestination);
-                    transform.position = Vector3.MoveTowards(transform.position, nextDestination, moveSpeed * Time.deltaTime);
-                }
+                FindNextPoint();
             }
+            else
+            {
+                transform.LookAt(nextDestination);
+                transform.position = Vector3.MoveTowards(transform.position, nextDestination, moveSpeed * Time.deltaTime);
+            }
+        }
 
-        health = BossHealth.currentHealth;
+        health = Level2BossHealth.currentHealth;
 
         if (health <= 0)
         {
@@ -119,7 +119,6 @@ public class BossBehavior : MonoBehaviour
 
     void SpiderDeath()
     {
-        AudioSource.PlayClipAtPoint(deadSFX, transform.position);
         anim.SetInteger("animState", 2);
         Destroy(gameObject, 2);
     }
