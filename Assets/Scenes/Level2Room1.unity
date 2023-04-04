@@ -870,16 +870,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335371437}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -156.69202, y: 7.306455, z: -41.61}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.768631, y: 41.060925, z: -4.0892487}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2013980461}
   - {fileID: 2140682772}
   - {fileID: 505744188}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 1493334924}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &346079369
 PrefabInstance:
@@ -888,6 +888,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1493334924}
     m_Modifications:
+    - target: {fileID: 2951998188687003727, guid: 9f256523c6d784862b53782a24082437, type: 3}
+      propertyPath: wanderPointParent
+      value: 
+      objectReference: {fileID: 454946746}
     - target: {fileID: 8456747236477669514, guid: 9f256523c6d784862b53782a24082437, type: 3}
       propertyPath: m_Name
       value: SkeleZombie (1)
@@ -1546,15 +1550,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454946746}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -163.79724, y: 4.0151525, z: -44.118782}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.873856, y: 37.769623, z: -6.59803}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 648342984}
   - {fileID: 1233368656}
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 1493334924}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &457248557
 GameObject:
@@ -5451,6 +5455,8 @@ Transform:
   m_Children:
   - {fileID: 817194500}
   - {fileID: 346079370}
+  - {fileID: 335371438}
+  - {fileID: 454946747}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
