@@ -75,6 +75,7 @@ public class PlayerHealth : MonoBehaviour
         // kill player in player controller
         pc.KillPlayer();
         // call function on some levelmanager to lose
+        GameObject.FindObjectOfType<LevelManager>().LevelLost();
 
     }
 

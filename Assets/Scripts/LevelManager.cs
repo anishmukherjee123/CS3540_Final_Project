@@ -36,6 +36,10 @@ public class LevelManager : MonoBehaviour
         //LoadNextLevel();
     }
 
+    public void LevelLost() {
+        Invoke(nameof(LoadCurrentLevel), 2);
+    }
+
 
     void LoadNextLevel()
     {
