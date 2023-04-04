@@ -16,6 +16,8 @@ public class TriggerRoomTransition : MonoBehaviour
     public float lightIntensity = 10f;
     public float invokeTime = 3f;
 
+    public float distanceToPlayer;
+
     public GameObject signal;
 
     public GameObject wallCrack;
@@ -38,6 +40,7 @@ public class TriggerRoomTransition : MonoBehaviour
         if(signal == null) {
             signal = GameObject.FindGameObjectWithTag("Signal");
         }
+        distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);;
     }
 
     // Update is called once per frame
@@ -45,7 +48,7 @@ public class TriggerRoomTransition : MonoBehaviour
     {
         enemyCount = LevelManager.enemiesInLevel;
 
-        float distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
+        distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
         print("Distance to player before if statement: " + distanceToPlayer);
         //print("Enemies in level: " + enemyCount);
         if (distanceToPlayer <= maxDistance && enemyCount <= 0)
@@ -63,7 +66,10 @@ public class TriggerRoomTransition : MonoBehaviour
             // level has been beat, load to next level
             GameObject.FindObjectOfType<LevelManager>().LevelBeat();
 
-            gameObject.SetActive(setTriggerActive);
+            //if(distanceToPlayer <= 1) {
+                gameObject.SetActive(setTriggerActive);
+            //}
+
             // play a sound effect and load to the next level
             AudioSource.PlayClipAtPoint(wallDestroyedSFX, Camera.main.transform.position);
 
