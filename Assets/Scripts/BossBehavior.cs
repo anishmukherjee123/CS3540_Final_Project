@@ -82,6 +82,7 @@ public class BossBehavior : MonoBehaviour
             //if the spider is dead, do the dead animation and then destroy the object
             anim.SetInteger("animState", 2);
             Destroy(gameObject, 2);
+            GameObject.FindObjectOfType<LevelManager>().LevelBeat();
         }
 
     }
@@ -114,10 +115,10 @@ public class BossBehavior : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //damages the player
-            //var playerHealth = other.GetComponent<PlayerHealth>();
-            //playerHealth.TakeDamage(damageAmount);
+            var playerHealth = other.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(damageAmount);
         }
-        else if (other.CompareTag("Projectile"))
+        else if (other.CompareTag("PlayerWeapon"))
         {
             //if hit by projectile, kills the boss
             //not sure what the tag for the attack weapon is, so that can be edited too

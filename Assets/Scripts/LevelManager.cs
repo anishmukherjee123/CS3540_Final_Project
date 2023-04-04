@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    public Text gameText;
 
+    public string levelBeatString;
+    public string levelLostString;
     public string nextLevel;
     public static int enemiesInLevel = 0;
-    public float invokeTime = 1f;
+    public float levelBeatInvokeTime = 1f;
+    public float levelLostInvokeTime = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,12 +37,19 @@ public class LevelManager : MonoBehaviour
     }
 
     public void LevelBeat() {
-        Invoke("LoadNextLevel", invokeTime);
-        //LoadNextLevel();
+        gameText.text = levelBeatString;
+
+        gameText.gameObject.SetActive(true);
+
+        Invoke("LoadNextLevel", levelBeatInvokeTime);
     }
 
     public void LevelLost() {
-        Invoke(nameof(LoadCurrentLevel), 2);
+        gameText.text = levelLostString;
+
+        gameText.gameObject.SetActive(true);
+
+        Invoke(nameof(LoadCurrentLevel), levelLostInvokeTime);
     }
 
 
