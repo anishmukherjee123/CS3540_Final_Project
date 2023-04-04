@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
 
     public string nextLevel;
     public static int enemiesInLevel = 0;
+    public float invokeTime = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +32,8 @@ public class LevelManager : MonoBehaviour
     }
 
     public void LevelBeat() {
-        //Invoke("LoadNextLevel", 2);
-        LoadNextLevel();
+        Invoke("LoadNextLevel", invokeTime);
+        //LoadNextLevel();
     }
 
 

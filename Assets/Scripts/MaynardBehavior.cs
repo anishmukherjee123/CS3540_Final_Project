@@ -66,4 +66,14 @@ public class MaynardBehavior : MonoBehaviour
     {
         readyToAttackPlayer = true;
     }
+
+    private void OnDrawGizmos() {
+        //attack
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
+
+        // chase
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, chaseRadius);
+    }
 }

@@ -14,12 +14,20 @@ public class TriggerRoomTransition : MonoBehaviour
     public float maxDistance = 50f;
 
     public float lightIntensity = 10f;
+    public float invokeTime = 3f;
 
     public GameObject signal;
 
     public GameObject wallCrack;
 
+    public bool setTriggerActive = false;
+
+    public bool setWallCrackActive = true;
+
     bool playSFX = false;
+
+    bool trigger = false;
+
 
 
     int enemyCount;
@@ -38,11 +46,11 @@ public class TriggerRoomTransition : MonoBehaviour
         enemyCount = LevelManager.enemiesInLevel;
 
         float distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
-        //print("Distance to player before if statement: " + distanceToPlayer);
-        print("Enemies in level: " + enemyCount);
+        print("Distance to player before if statement: " + distanceToPlayer);
+        //print("Enemies in level: " + enemyCount);
         if (distanceToPlayer <= maxDistance && enemyCount <= 0)
         {
-            Invoke("InitiateTrigger", 3);
+            Invoke("InitiateTrigger", invokeTime);
         }
 
     }
@@ -50,20 +58,28 @@ public class TriggerRoomTransition : MonoBehaviour
     private void OnCollisionEnter(Collision collider)
     {
         print("enemies in level: " + enemyCount);
-        if (collider.gameObject.CompareTag("Player") && enemyCount <= 0)
+        if (collider.gameObject.CompareTag("Player") && enemyCount <= 0 && trigger)
         {
-            gameObject.SetActive(false);
-            // play a sound effect and load to the next level
-            AudioSource.PlayClipAtPoint(wallDestroyedSFX, Camera.main.transform.position);
             // level has been beat, load to next level
             GameObject.FindObjectOfType<LevelManager>().LevelBeat();
+
+            gameObject.SetActive(setTriggerActive);
+            // play a sound effect and load to the next level
+            AudioSource.PlayClipAtPoint(wallDestroyedSFX, Camera.main.transform.position);
+
 
         }
     }
 
     private void InitiateTrigger() {
             //print("Distance to player in if statement: " + distanceToPlayer);
-            wallCrack.SetActive(true);
+            if(setWallCrackActive) {
+                wallCrack.SetActive(true);
+            }
+
+
+            trigger = true;
+
             // add wall crack sound effect
             if(!playSFX) {
                 AudioSource.PlayClipAtPoint(wallCrackSFX, Camera.main.transform.position);
