@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
     float durationTimer;
     public int currentHealth;
 
+    LevelManager levelManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,8 @@ public class PlayerHealth : MonoBehaviour
         // start with alpha as 0
         overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 0);
         pc = FindObjectOfType<PlayerController>();
+
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -76,6 +80,7 @@ public class PlayerHealth : MonoBehaviour
         pc.KillPlayer();
         // call function on some levelmanager to lose
 
+        Invoke("killPlayer", 3);
     }
 
     public void addShield(int add)
@@ -90,5 +95,10 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(10);
         }
+    }
+
+    void killPlayer()
+    {
+        levelManager.LevelLost();
     }
 }
