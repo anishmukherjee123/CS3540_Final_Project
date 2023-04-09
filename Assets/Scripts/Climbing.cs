@@ -9,11 +9,14 @@ public class Climbing : MonoBehaviour
     public Transform orientation;
     public Rigidbody rb;
     public LayerMask whatIsWall;
+
+    [Header("UI and Effects")]
     public GameObject climbingOverParticle;
+    public Slider climbStaminaBar;
+    public GameObject climbPrompt;
 
     [Header("StaminaSettings")]
     public float climbStamina = 10.0f;
-    public Slider climbStaminaBar;
 
     [Header("ClimbJump")]
     public KeyCode climbJumpKey = KeyCode.Space;
@@ -37,6 +40,7 @@ public class Climbing : MonoBehaviour
         pc = FindObjectOfType<PlayerController>();
         climbStaminaBar.gameObject.SetActive(false);
         climbStaminaBar.value = climbStamina;
+        climbPrompt.SetActive(false);
         currentStamina = climbStamina;
     }
 
@@ -44,6 +48,7 @@ public class Climbing : MonoBehaviour
     void Update()
     {
         WallCheck();
+        DisplayPrompt();
         StateMachine();
         if (climbing)
         {
@@ -112,11 +117,24 @@ public class Climbing : MonoBehaviour
         wallFront = Physics.Raycast(transform.position, orientation.forward, out frontWallHit, detectionLength, whatIsWall);
     }
 
+    private void DisplayPrompt()
+    {
+        if (wallFront && !climbing)
+        {
+            climbPrompt.SetActive(true);
+        }
+        else
+        {
+            climbPrompt.SetActive(false);
+        }
+    }
+
     private void StartClimbing()
     {
         climbing = true;
         pc.climbing = true;
         rb.useGravity = false;
+        climbPrompt.gameObject.SetActive(false);
         climbStaminaBar.gameObject.SetActive(true);
 
         // rotate the player to be facing the wall
