@@ -1236,7 +1236,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 81746161784511581}
-  - {fileID: 53355571745688856}
   m_Father: {fileID: 2589986123895894473}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2356,37 +2355,6 @@ Transform:
   m_Father: {fileID: 8553475396354680462}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6349925866711463992
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 53355571745688856}
-  m_Layer: 0
-  m_Name: EnemyEyes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &53355571745688856
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6349925866711463992}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0.052, z: 0.082}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2916965409245747379}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6520792579209668133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2915,8 +2883,6 @@ MonoBehaviour:
   attackRadius: 4
   attackCooldown: 1
   wanderPointParent: {fileID: 0}
-  enemyEyes: {fileID: 53355571745688856}
-  fieldOfView: 45
 --- !u!114 &-358402974853276835
 MonoBehaviour:
   m_ObjectHideFlags: 0
