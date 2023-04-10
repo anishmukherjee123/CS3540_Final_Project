@@ -24,6 +24,9 @@ public class SkeletonBehavior : MonoBehaviour
 
     public GameObject wanderPointParent;
 
+    public Transform enemyEyes;
+    public float fieldOfView = 45;
+
     Animator anim;
 
     bool readyToAttackPlayer;
@@ -107,8 +110,7 @@ public class SkeletonBehavior : MonoBehaviour
             //Debug.Log("Looks for next point");
             FindNextPoint();
         }
-        else if(distanceToPlayer <= chaseRadius && 
-            !anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+        else if(IsPlayerInClearFov() && !anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
         {
             //Debug.Log("Sees player");
             state = FSM_states.Chase;
@@ -181,27 +183,6 @@ public class SkeletonBehavior : MonoBehaviour
         agent.SetDestination(nextDest);
     }
 
-    /*void ChasePlayer()
-    {
-        if (Vector3.Distance(transform.position, player.position) <= attackRadius && readyToAttackPlayer)
-        {
-            // attack the player
-            AttackPlayer(); //change this so it directly damages the player when it attacks, rather than relying on colliders
-            readyToAttackPlayer = false;
-            Invoke(nameof(ResetAttackCooldown), attackCooldown);
-        }
-        else if (Vector3.Distance(transform.position, player.position) > attackRadius)
-        {
-            // set running animation
-            anim.SetInteger("animState", 1);
-            Vector3 playerNoY = new Vector3(player.position.x, transform.position.y, player.position.z);
-            // look at x/z of the player
-            transform.LookAt(playerNoY);
-            // chase player
-            transform.position = Vector3.MoveTowards(transform.position, playerNoY, moveSpeed * Time.deltaTime);
-        }
-    }*/
-
     void AttackPlayer()
     {
         // play attack animation
@@ -213,13 +194,39 @@ public class SkeletonBehavior : MonoBehaviour
         readyToAttackPlayer = true;
     }
 
+    bool IsPlayerInClearFov()
+    {
+        Vector3 directionToPlayer = player.transform.position - enemyEyes.position;
+
+        RaycastHit hit;
+
+        if (Vector3.Angle(directionToPlayer, enemyEyes.forward) <= fieldOfView)
+        {
+            if (Physics.Raycast(enemyEyes.position, directionToPlayer, out hit, chaseRadius))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    Debug.Log("Player in sight");
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
+
+        return false;
+    }
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
+        Vector3 frontRayPoint = enemyEyes.position + (enemyEyes.forward * chaseRadius);
+        //create a ray that is the front ray, but rotated around half of the field of view width 
+        Vector3 leftRayPoint = Quaternion.Euler(0, fieldOfView * .5f, 0) * frontRayPoint;
+        Vector3 rightRayPoint = Quaternion.Euler(0, -fieldOfView * .5f, 0) * frontRayPoint;
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, chaseRadius);
+        Debug.DrawLine(enemyEyes.position, frontRayPoint, Color.cyan);
+        Debug.DrawLine(enemyEyes.position, leftRayPoint, Color.yellow);
+        Debug.DrawLine(enemyEyes.position, rightRayPoint, Color.yellow);
 
     }
 }
