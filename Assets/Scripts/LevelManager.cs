@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void LevelBeat() {
+        print("LevelBeat has been called");
         gameText.text = levelBeatString;
 
         gameText.gameObject.SetActive(true);
@@ -55,6 +56,7 @@ public class LevelManager : MonoBehaviour
 
     void LoadNextLevel()
     {
+        print("LoadNextLevel called with: " + nextLevel);
         SceneManager.LoadScene(nextLevel);
     }
 
