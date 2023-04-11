@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TriggerRoomTransition : MonoBehaviour
 {
@@ -10,6 +7,8 @@ public class TriggerRoomTransition : MonoBehaviour
     public AudioClip wallDestroyedSFX;
     public AudioClip wallCrackSFX;
     public GameObject player;
+
+    public GameObject arrow;
 
     public float maxDistance = 50f;
 
@@ -80,7 +79,7 @@ public class TriggerRoomTransition : MonoBehaviour
 
             // play a sound effect and load to the next level
             AudioSource.PlayClipAtPoint(wallDestroyedSFX, Camera.main.transform.position);
-            shakeScreen.shakeCamera(0.1f, 0.5f, 1f);
+            //shakeScreen.shakeCamera(0.5f, 10f, 1f);
 
 
         }
@@ -106,5 +105,7 @@ public class TriggerRoomTransition : MonoBehaviour
             foreach(Light eachLight in lights) {
                 eachLight.intensity = lightIntensity;
             }
+
+            arrow.SetActive(true);
     }
 }

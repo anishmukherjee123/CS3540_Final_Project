@@ -9,13 +9,13 @@ public class ShakeScreenEffect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cameraPos = gameObject.transform.localPosition;
+        cameraPos = gameObject.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        cameraPos = gameObject.transform.localPosition;
+        cameraPos = gameObject.transform.position;
     }
 
 
@@ -35,13 +35,13 @@ public class ShakeScreenEffect : MonoBehaviour
             yield return new WaitForSeconds(shakeInterval);
             float newX = Random.Range(-1f, 1f) * intensity;
             float newY = Random.Range(-1f, 1f) *  intensity;
-            Vector3 newPos = gameObject.transform.localPosition += new Vector3(newX, newY, cameraPos.z);
+            Vector3 newPos = gameObject.transform.position += new Vector3(newX, newY, cameraPos.z);
 
-            gameObject.transform.localPosition =
-             Vector3.Lerp(gameObject.transform.localPosition, newPos, damping);
+            gameObject.transform.position =
+             Vector3.Lerp(gameObject.transform.position, newPos, damping);
         }
 
         // reset the camera's position back to original
-        gameObject.transform.localPosition = oldPos;
+        gameObject.transform.position = oldPos;
     }
 }
