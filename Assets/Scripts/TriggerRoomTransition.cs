@@ -30,11 +30,14 @@ public class TriggerRoomTransition : MonoBehaviour
 
     float distanceToPlayer;
 
+    ShakeScreenEffect shakeScreen;
+
 
 
     int enemyCount;
     void Start()
     {
+        shakeScreen = GameObject.FindObjectOfType<ShakeScreenEffect>();
         enemyCount = LevelManager.enemiesInLevel;
         player = GameObject.FindGameObjectWithTag("Player");
         if(signal == null) {
@@ -49,10 +52,14 @@ public class TriggerRoomTransition : MonoBehaviour
         enemyCount = LevelManager.enemiesInLevel;
 
         distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
-        print("Distance to player before if statement: " + distanceToPlayer);
+
+        //print("Distance to player before if statement: " + distanceToPlayer);
         //print("Enemies in level: " + enemyCount);
+
         if (distanceToPlayer <= maxDistance && enemyCount <= 0)
         {
+            print("Trigger invoked");
+
             Invoke("InitiateTrigger", invokeTime);
         }
 
@@ -63,6 +70,7 @@ public class TriggerRoomTransition : MonoBehaviour
         print("enemies in level: " + enemyCount);
         if (collider.gameObject.CompareTag("Player") && enemyCount <= 0 && trigger)
         {
+            print("Player has collided with me");
             // level has been beat, load to next level
             GameObject.FindObjectOfType<LevelManager>().LevelBeat();
 
@@ -72,6 +80,7 @@ public class TriggerRoomTransition : MonoBehaviour
 
             // play a sound effect and load to the next level
             AudioSource.PlayClipAtPoint(wallDestroyedSFX, Camera.main.transform.position);
+            shakeScreen.shakeCamera(0.1f, 0.5f, 1f);
 
 
         }
