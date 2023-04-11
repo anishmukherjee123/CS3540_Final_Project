@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5755039785381964225}
   - component: {fileID: 7906110172399745626}
   - component: {fileID: 7207857920088477838}
+  - component: {fileID: -6767631190806981426}
   m_Layer: 0
   m_Name: Biomass_18
   m_TagString: Untagged
@@ -28,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0.00000006584068, y: -0.5888333, z: 0.000000047966562, w: 0.80825454}
   m_LocalPosition: {x: 6.937, y: 0, z: 0.299}
   m_LocalScale: {x: 1.1124, y: 1.1123999, z: 1.1123999}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,9 +53,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -78,3 +83,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-6767631190806981426
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4152421844711353797}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6247026869423331561, guid: 4894ac0a200c27f44be0fe5ce9759c51, type: 3}

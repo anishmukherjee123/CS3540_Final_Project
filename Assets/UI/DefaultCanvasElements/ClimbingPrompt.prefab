@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press RMB
+  m_text: 'Right click
 
     to start climbing!'
   m_isRightToLeft: 0
