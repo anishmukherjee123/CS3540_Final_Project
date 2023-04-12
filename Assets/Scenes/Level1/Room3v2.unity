@@ -24195,6 +24195,10 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 560249132}
+    - target: {fileID: 2956296773347160216, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2956296773347160220, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_Mesh
       value: 
