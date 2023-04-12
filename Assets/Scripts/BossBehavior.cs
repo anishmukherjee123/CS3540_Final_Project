@@ -19,6 +19,8 @@ public class BossBehavior : MonoBehaviour
 
     bool attackTurn;
 
+    bool playSFX = false;
+
     void Start()
     {
         //set the wander points, get the animator and set it to walking
@@ -119,7 +121,10 @@ public class BossBehavior : MonoBehaviour
 
     void SpiderDeath()
     {
-        AudioSource.PlayClipAtPoint(deadSFX, transform.position);
+        if(!playSFX) {
+            AudioSource.PlayClipAtPoint(deadSFX, transform.position);
+            playSFX = true;
+        }
         anim.SetInteger("animState", 2);
         Destroy(gameObject, 2);
     }
