@@ -12,6 +12,8 @@ public class EnemyHealth : MonoBehaviour
     public int currentHealth;
 
     Animator anim;
+
+    bool dead = false;
     private void Awake()
     {
         healthBar = GetComponentInChildren<Slider>();
@@ -31,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
             currentHealth -= damageAmount;
             healthBar.value = currentHealth;
         }
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !dead) 
         {
             Death();
         }
@@ -39,6 +41,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Death()
     {
+        dead = true;
         AudioSource.PlayClipAtPoint(deathSFX, transform.position);
         anim.Play("Hit", 0);
         anim.SetInteger("animState", 3);

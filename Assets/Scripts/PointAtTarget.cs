@@ -7,7 +7,25 @@ public class PointAtTarget : MonoBehaviour
     public GameObject target;
     public float directionChange = 1f;
 
+    KeyCode activateArrow;
+
+    bool isToggled = false;
+
+    void Start() {
+        if(target == null) {
+            target = GameObject.FindGameObjectWithTag("LevelEndPt");
+        }
+        activateArrow = KeyCode.X;
+    }
     void Update () {
+        if(Input.GetKey(activateArrow)) {
+            isToggled = true;
+            if(isToggled) {
+                gameObject.SetActive(true);
+            } else {
+                gameObject.SetActive(false);
+            }
+        }
         RotateArrow();
     }
 
