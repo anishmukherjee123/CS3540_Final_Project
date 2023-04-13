@@ -17,12 +17,10 @@ public class LevelManager : MonoBehaviour
     public float levelBeatInvokeTime = 1f;
     public float levelLostInvokeTime = 1f;
 
-    float maxEnemies;
     // Start is called before the first frame update
     void Start()
     {
         enemiesInLevel = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        maxEnemies = enemiesInLevel;
     }
 
     // Update is called once per frame
