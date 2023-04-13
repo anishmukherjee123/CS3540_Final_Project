@@ -8,7 +8,7 @@ public class TriggerRoomTransition : MonoBehaviour
     public AudioClip wallCrackSFX;
     public GameObject player;
 
-    public GameObject arrow;
+    //public GameObject arrow;
 
     public float maxDistance = 50f;
 
@@ -66,19 +66,21 @@ public class TriggerRoomTransition : MonoBehaviour
 
     private void OnCollisionEnter(Collision collider)
     {
-        print("enemies in level: " + enemyCount);
+        // print("enemies in level: " + enemyCount);
         if (collider.gameObject.CompareTag("Player") && enemyCount <= 0 && trigger)
         {
             print("Player has collided with me");
             // level has been beat, load to next level
             GameObject.FindObjectOfType<LevelManager>().LevelBeat();
 
-            //if(distanceToPlayer <= 1) {
-                gameObject.SetActive(setTriggerActive);
-            //}
+            
+            gameObject.SetActive(setTriggerActive);
+            
 
             // play a sound effect and load to the next level
             AudioSource.PlayClipAtPoint(wallDestroyedSFX, Camera.main.transform.position);
+            print("Destruction of wall sfx has been played");
+
             //shakeScreen.shakeCamera(0.5f, 10f, 1f);
 
 
@@ -86,26 +88,28 @@ public class TriggerRoomTransition : MonoBehaviour
     }
 
     private void InitiateTrigger() {
-            //print("Distance to player in if statement: " + distanceToPlayer);
             if(setWallCrackActive) {
                 wallCrack.SetActive(true);
             }
-
 
             trigger = true;
 
             // add wall crack sound effect
             if(!playSFX) {
+                print("Wall crack sfx has been played");
                 AudioSource.PlayClipAtPoint(wallCrackSFX, Camera.main.transform.position);
                 playSFX = true;
             }
-
+            print("Outside of playSFX if statement");
             Light[] lights = signal.GetComponentsInChildren<Light>();
+            print("Lights have been found");
 
             foreach(Light eachLight in lights) {
                 eachLight.intensity = lightIntensity;
             }
+            print("Intensity of signals has been increased");
 
-            arrow.SetActive(true);
+            //arrow.SetActive(true);
+            //print("Guiding arrow has been activated");
     }
 }
