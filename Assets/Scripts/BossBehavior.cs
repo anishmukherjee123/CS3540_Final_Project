@@ -122,7 +122,7 @@ public class BossBehavior : MonoBehaviour
     void SpiderDeath()
     {
         if(!playSFX) {
-            AudioSource.PlayClipAtPoint(deadSFX, transform.position);
+            AudioSource.PlayClipAtPoint(deadSFX, Camera.main.transform.position);
             playSFX = true;
         }
         anim.SetInteger("animState", 2);
