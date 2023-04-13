@@ -22,26 +22,12 @@ public class PlayerHit : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision obj)
-    {
-        if (damageReady)
-        {
-            if (obj.gameObject.CompareTag("EnemyWeaponSkeleton"))
-            {
-                ph.TakeDamage(skeletonDamage); //remove this call and put it in the attack state of the enemy
-                damageReady = false;
-                Invoke("ResetDamageCooldown", damageCoolDown);
-            }
-        }
-    }
-
     void OnTriggerEnter(Collider col)
     {
         if (damageReady)
         {
             if (col.CompareTag("EnemyWeaponSkeleton"))
             {
-                print("trigger damage");
                 ph.TakeDamage(skeletonDamage); //remove this call and put it in the attack state of the enemy
                 damageReady = false;
                 Invoke("ResetDamageCooldown", damageCoolDown);

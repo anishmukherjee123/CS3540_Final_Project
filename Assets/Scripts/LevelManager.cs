@@ -76,7 +76,7 @@ public class LevelManager : MonoBehaviour
 
     void setEnemiesLeftText()
     {
-        // print("Enemies in level: " + enemiesInLevel);
+        print("Enemies in level: " + enemiesInLevel);
         if (enemiesInLevel < 0)
         {
             enemiesLeftTxt.text = "Enemies Left:  " + 0;
@@ -89,7 +89,7 @@ public class LevelManager : MonoBehaviour
 
     // private void OnTriggerEnter(Collider other)
     // {
-    //     if(other.CompareTag("Player") && enemiesInLevel == 0)
+    //     if (other.CompareTag("Player") && enemiesInLevel == 0)
     //     {
     //         LoadNextLevel();
     //     }

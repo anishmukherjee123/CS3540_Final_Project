@@ -20,7 +20,7 @@ public class SkeletonBehavior : MonoBehaviour
 
     public float chaseRadius = 40.0f;
     public float attackRadius = 20.0f;
-    public float attackCooldown = 1.0f;
+    public float attackCooldown = 2.5f;
 
     public GameObject wanderPointParent;
 
@@ -83,17 +83,20 @@ public class SkeletonBehavior : MonoBehaviour
     {
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        switch (state)
+        if (!GetComponent<EnemyHealth>().dead)
         {
-            case FSM_states.Patrol:
-                UpdatePatrolState();
-                break;
-            case FSM_states.Chase:
-                UpdateChaseState();
-                break;
-            case FSM_states.Attack:
-                UpdateAttackState();
-                break;
+            switch (state)
+            {
+                case FSM_states.Patrol:
+                    UpdatePatrolState();
+                    break;
+                case FSM_states.Chase:
+                    UpdateChaseState();
+                    break;
+                case FSM_states.Attack:
+                    UpdateAttackState();
+                    break;
+            }
         }
         elapsedTime += Time.deltaTime;
 
@@ -148,7 +151,7 @@ public class SkeletonBehavior : MonoBehaviour
         nextDest = player.position;
         agent.stoppingDistance = 0;
 
-        if (distanceToPlayer > attackRadius && distanceToPlayer <= chaseRadius)
+        if (distanceToPlayer > attackRadius && distanceToPlayer <= chaseRadius && readyToAttackPlayer)
         {
             state = FSM_states.Chase;
         }
