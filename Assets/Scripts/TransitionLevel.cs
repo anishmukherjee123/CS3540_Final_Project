@@ -13,6 +13,7 @@ public class TransitionLevel : MonoBehaviour
             LevelManager.enemiesInLevel--;
             dead = true;
         }
+        
         if(LevelManager.enemiesInLevel <= 0) {
             GameObject.FindObjectOfType<LevelManager>().LevelBeat();
         }

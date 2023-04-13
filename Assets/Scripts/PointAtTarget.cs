@@ -10,11 +10,13 @@ public class PointAtTarget : MonoBehaviour
 
     KeyCode activateArrow;
 
+    GameObject[] enemies;
+
     bool isToggled = false;
 
     void Start() {
         if(target == null) {
-            target = GameObject.FindGameObjectWithTag("LevelEndPt");
+            findClosestEnemy();
         }
 
         if(SceneManager.GetActiveScene().name.Contains("Boss")) {
@@ -22,6 +24,8 @@ public class PointAtTarget : MonoBehaviour
         } else {
             gameObject.SetActive(true);
         }
+
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         activateArrow = KeyCode.X;
     }
     void Update () {
@@ -35,7 +39,7 @@ public class PointAtTarget : MonoBehaviour
         }
 
         if(LevelManager.enemiesInLevel > 0) {
-            target = GameObject.FindGameObjectWithTag("Enemy");
+            findClosestEnemy();
         } else {
             target = GameObject.FindGameObjectWithTag("LevelEndPt");
         }
@@ -51,5 +55,19 @@ public class PointAtTarget : MonoBehaviour
         Vector3 axis = Vector3.Cross(transform.forward, direction);
         Quaternion rotation = Quaternion.AngleAxis(angle, axis);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpd * Time.deltaTime);
+    }
+
+    void findClosestEnemy() {
+        float minDistance = Vector3.Distance(gameObject.transform.position, enemies[0].transform.position);
+        GameObject targetEnemy = enemies[0];
+        foreach(GameObject eachEnemy in enemies) {
+            float currentDistance = Vector3.Distance(gameObject.transform.position, eachEnemy.transform.position);
+            if(currentDistance < minDistance && !eachEnemy.GetComponent<EnemyHealth>().dead) {
+                minDistance = currentDistance;
+                targetEnemy = eachEnemy;
+            }
+        }
+
+        target = targetEnemy;
     }
 }
