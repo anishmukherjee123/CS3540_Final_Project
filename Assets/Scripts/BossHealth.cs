@@ -11,6 +11,8 @@ public class BossHealth : MonoBehaviour
 
     public Slider healthSlider;
 
+    public AudioClip hitSFX;
+
     private void Awake()
     {
         healthSlider = GetComponentInChildren<Slider>();
@@ -36,6 +38,7 @@ public class BossHealth : MonoBehaviour
     {
         if (other.CompareTag("PlayerWeapon"))
         {
+            AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position);
             TakeDamage(10);
         }
     }
