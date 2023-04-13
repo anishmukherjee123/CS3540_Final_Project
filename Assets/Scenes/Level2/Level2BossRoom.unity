@@ -5872,7 +5872,7 @@ GameObject:
   - component: {fileID: 961457677}
   - component: {fileID: 961457676}
   - component: {fileID: 961457675}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6875,6 +6875,10 @@ PrefabInstance:
     - target: {fileID: 2611036437876359589, guid: 6e80b62dbf64d49c483c9df7df3ebac2, type: 3}
       propertyPath: m_Name
       value: Pipe
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611036437876359589, guid: 6e80b62dbf64d49c483c9df7df3ebac2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4288332737122175980, guid: 6e80b62dbf64d49c483c9df7df3ebac2, type: 3}
       propertyPath: m_Mesh
@@ -11560,7 +11564,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-105956
+  m_Name: pb_Mesh-30854
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

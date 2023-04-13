@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 70087332}
   - component: {fileID: 70087331}
   - component: {fileID: 70087330}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 98028348}
   - component: {fileID: 98028347}
   - component: {fileID: 98028346}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PolyShape (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1984,7 +1984,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh116384
+  m_Name: pb_Mesh30766
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2540,7 +2540,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh116626
+  m_Name: pb_Mesh31018
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3674,7 +3674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9087018536522447017, guid: 05f814b33257e5441958bde7990f1d6e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05f814b33257e5441958bde7990f1d6e, type: 3}
@@ -3692,7 +3692,7 @@ GameObject:
   - component: {fileID: 558275126}
   - component: {fileID: 558275125}
   - component: {fileID: 558275124}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PolyShape (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4362,7 +4362,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh116534
+  m_Name: pb_Mesh30926
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4688,7 +4688,7 @@ GameObject:
   - component: {fileID: 686736513}
   - component: {fileID: 686736512}
   - component: {fileID: 686736511}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arch (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8112,7 +8112,7 @@ GameObject:
   - component: {fileID: 836059015}
   - component: {fileID: 836059014}
   - component: {fileID: 836059013}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9065,7 +9065,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh116412
+  m_Name: pb_Mesh30798
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9289,6 +9289,10 @@ PrefabInstance:
     - target: {fileID: 6972586330261385879, guid: fff8085d4c7855e4782fe65b0cbc352d, type: 3}
       propertyPath: m_Name
       value: BiomassGathBF_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6972586330261385879, guid: fff8085d4c7855e4782fe65b0cbc352d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fff8085d4c7855e4782fe65b0cbc352d, type: 3}
@@ -9758,7 +9762,7 @@ GameObject:
   - component: {fileID: 1041968671}
   - component: {fileID: 1041968670}
   - component: {fileID: 1041968669}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pipe (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10977,7 +10981,7 @@ GameObject:
   - component: {fileID: 1167579568}
   - component: {fileID: 1167579567}
   - component: {fileID: 1167579566}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13913,7 +13917,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh116298
+  m_Name: pb_Mesh30670
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14549,7 +14553,7 @@ GameObject:
   - component: {fileID: 1356022811}
   - component: {fileID: 1356022810}
   - component: {fileID: 1356022809}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PolyShape (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15611,7 +15615,7 @@ GameObject:
   - component: {fileID: 1463830078}
   - component: {fileID: 1463830077}
   - component: {fileID: 1463830076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15785,7 +15789,7 @@ GameObject:
   - component: {fileID: 1514855253}
   - component: {fileID: 1514855252}
   - component: {fileID: 1514855251}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PolyShape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17021,7 +17025,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh116580
+  m_Name: pb_Mesh30972
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17185,7 +17189,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh116450
+  m_Name: pb_Mesh30840
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18310,7 +18314,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh119652
+  m_Name: pb_Mesh30892
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19385,6 +19389,10 @@ PrefabInstance:
     - target: {fileID: 6972586330261385879, guid: fff8085d4c7855e4782fe65b0cbc352d, type: 3}
       propertyPath: m_Name
       value: BiomassGathBF_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6972586330261385879, guid: fff8085d4c7855e4782fe65b0cbc352d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fff8085d4c7855e4782fe65b0cbc352d, type: 3}
