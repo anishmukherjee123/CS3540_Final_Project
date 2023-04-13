@@ -14577,6 +14577,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1235707594, guid: 829967725489a4495a8a1a77cceccca6, type: 3}
+      propertyPath: attackSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 283f8290cd9b8cf4d935aea5fa20885d, type: 3}
+    - target: {fileID: 1235707594, guid: 829967725489a4495a8a1a77cceccca6, type: 3}
       propertyPath: moveSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -14588,6 +14592,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7437678187064878238, guid: 829967725489a4495a8a1a77cceccca6, type: 3}
+      propertyPath: hitSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: ea34b8294385e4247ac4b41691e609cc, type: 3}
     - target: {fileID: 8244585178095637401, guid: 829967725489a4495a8a1a77cceccca6, type: 3}
       propertyPath: m_RootOrder
       value: 7
