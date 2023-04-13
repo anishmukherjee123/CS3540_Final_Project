@@ -83,19 +83,15 @@ public class SkeletonBehavior : MonoBehaviour
     {
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        IsPlayerInClearFov();
-
         switch (state)
         {
             case FSM_states.Patrol:
                 UpdatePatrolState();
                 break;
             case FSM_states.Chase:
-                print("Chasing...");
                 UpdateChaseState();
                 break;
             case FSM_states.Attack:
-                print("Attacking...");
                 UpdateAttackState();
                 break;
         }
@@ -211,20 +207,11 @@ public class SkeletonBehavior : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Player"))
                 {
-                    Debug.Log("Player in sight");
                     return true;
-                }
-                else
-                {
-                    print("Raycast not hitting player");
                 }
                 return false;
             }
             return false;
-        }
-        else
-        {
-            print("Player not in FOV");
         }
 
         return false;
