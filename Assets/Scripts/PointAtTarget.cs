@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PointAtTarget : MonoBehaviour
 {
     public GameObject target;
-    public float directionChange = 1f;
+    public float rotationSpd = 1f;
 
     KeyCode activateArrow;
 
@@ -14,6 +15,12 @@ public class PointAtTarget : MonoBehaviour
     void Start() {
         if(target == null) {
             target = GameObject.FindGameObjectWithTag("LevelEndPt");
+        }
+
+        if(SceneManager.GetActiveScene().name.Contains("Boss")) {
+            gameObject.SetActive(false);
+        } else {
+            gameObject.SetActive(true);
         }
         activateArrow = KeyCode.X;
     }
@@ -34,6 +41,6 @@ public class PointAtTarget : MonoBehaviour
         float angle = Vector3.Angle(transform.forward, direction);
         Vector3 axis = Vector3.Cross(transform.forward, direction);
         Quaternion rotation = Quaternion.AngleAxis(angle, axis);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, directionChange * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpd * Time.deltaTime);
     }
 }
