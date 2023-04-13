@@ -22,11 +22,11 @@ public class PlayerHit : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision obj)
+    void OnTriggerEnter(Collider col)
     {
         if (damageReady)
         {
-            if (obj.gameObject.CompareTag("EnemyWeaponSkeleton") || obj.gameObject.CompareTag("EnemyWeaponMaynard"))
+            if (col.CompareTag("EnemyWeaponSkeleton"))
             {
                 ph.TakeDamage(skeletonDamage); //remove this call and put it in the attack state of the enemy
                 damageReady = false;

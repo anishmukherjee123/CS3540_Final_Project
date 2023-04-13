@@ -8,12 +8,14 @@ public class EnemyHealth : MonoBehaviour
     public int startingHealth = 100;
     public AudioClip deathSFX;
     public Slider healthBar;
+    public float damageCooldown = 0.75f;
+    bool damageReady = true;
 
     public int currentHealth;
 
     Animator anim;
 
-    bool dead = false;
+    public bool dead = false;
     private void Awake()
     {
         healthBar = GetComponentInChildren<Slider>();
@@ -33,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
             currentHealth -= damageAmount;
             healthBar.value = currentHealth;
         }
-        if (currentHealth <= 0 && !dead) 
+        if (currentHealth <= 0 && !dead)
         {
             Death();
         }
@@ -43,17 +45,23 @@ public class EnemyHealth : MonoBehaviour
     {
         dead = true;
         AudioSource.PlayClipAtPoint(deathSFX, transform.position);
-        anim.Play("Hit", 0);
-        anim.SetInteger("animState", 3);
+        anim.SetInteger("animState", 4);
         LevelManager.enemiesInLevel--;
         Destroy(gameObject, 2.25f);
     }
 
     void OnTriggerEnter(Collider obj)
     {
-        if (obj.gameObject.CompareTag("PlayerWeapon"))
+        if (obj.gameObject.CompareTag("PlayerWeapon") && damageReady)
         {
-            TakeDamage(obj.gameObject.GetComponent<WeaponCollision>().damage); 
+            damageReady = false;
+            Invoke(nameof(ResetDamageCooldown), damageCooldown);
+            TakeDamage(obj.gameObject.GetComponent<WeaponCollision>().damage);
         }
+    }
+
+    void ResetDamageCooldown()
+    {
+        damageReady = true;
     }
 }
