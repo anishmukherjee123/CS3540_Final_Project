@@ -39,10 +39,11 @@ public class TriggerRoomTransition : MonoBehaviour
         shakeScreen = GameObject.FindObjectOfType<ShakeScreenEffect>();
         enemyCount = LevelManager.enemiesInLevel;
         player = GameObject.FindGameObjectWithTag("Player");
-        if(signal == null) {
+        if (signal == null)
+        {
             signal = GameObject.FindGameObjectWithTag("Signal");
         }
-        distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);;
+        distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position); ;
     }
 
     // Update is called once per frame
@@ -66,7 +67,7 @@ public class TriggerRoomTransition : MonoBehaviour
 
     private void OnCollisionEnter(Collision collider)
     {
-        print("enemies in level: " + enemyCount);
+        //print("enemies in level: " + enemyCount);
         if (collider.gameObject.CompareTag("Player") && enemyCount <= 0 && trigger)
         {
             print("Player has collided with me");
@@ -74,7 +75,7 @@ public class TriggerRoomTransition : MonoBehaviour
             GameObject.FindObjectOfType<LevelManager>().LevelBeat();
 
             //if(distanceToPlayer <= 1) {
-                gameObject.SetActive(setTriggerActive);
+            gameObject.SetActive(setTriggerActive);
             //}
 
             // play a sound effect and load to the next level
@@ -85,27 +86,31 @@ public class TriggerRoomTransition : MonoBehaviour
         }
     }
 
-    private void InitiateTrigger() {
-            //print("Distance to player in if statement: " + distanceToPlayer);
-            if(setWallCrackActive) {
-                wallCrack.SetActive(true);
-            }
+    private void InitiateTrigger()
+    {
+        //print("Distance to player in if statement: " + distanceToPlayer);
+        if (setWallCrackActive)
+        {
+            wallCrack.SetActive(true);
+        }
 
 
-            trigger = true;
+        trigger = true;
 
-            // add wall crack sound effect
-            if(!playSFX) {
-                AudioSource.PlayClipAtPoint(wallCrackSFX, Camera.main.transform.position);
-                playSFX = true;
-            }
+        // add wall crack sound effect
+        if (!playSFX)
+        {
+            AudioSource.PlayClipAtPoint(wallCrackSFX, Camera.main.transform.position);
+            playSFX = true;
+        }
 
-            Light[] lights = signal.GetComponentsInChildren<Light>();
+        Light[] lights = signal.GetComponentsInChildren<Light>();
 
-            foreach(Light eachLight in lights) {
-                eachLight.intensity = lightIntensity;
-            }
+        foreach (Light eachLight in lights)
+        {
+            eachLight.intensity = lightIntensity;
+        }
 
-            arrow.SetActive(true);
+        arrow.SetActive(true);
     }
 }

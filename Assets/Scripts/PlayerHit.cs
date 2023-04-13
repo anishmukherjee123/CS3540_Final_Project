@@ -26,8 +26,22 @@ public class PlayerHit : MonoBehaviour
     {
         if (damageReady)
         {
-            if (obj.gameObject.CompareTag("EnemyWeaponSkeleton") || obj.gameObject.CompareTag("EnemyWeaponMaynard"))
+            if (obj.gameObject.CompareTag("EnemyWeaponSkeleton"))
             {
+                ph.TakeDamage(skeletonDamage); //remove this call and put it in the attack state of the enemy
+                damageReady = false;
+                Invoke("ResetDamageCooldown", damageCoolDown);
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (damageReady)
+        {
+            if (col.CompareTag("EnemyWeaponSkeleton"))
+            {
+                print("trigger damage");
                 ph.TakeDamage(skeletonDamage); //remove this call and put it in the attack state of the enemy
                 damageReady = false;
                 Invoke("ResetDamageCooldown", damageCoolDown);

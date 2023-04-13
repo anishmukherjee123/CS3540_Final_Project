@@ -43,7 +43,8 @@ public class LevelManager : MonoBehaviour
         setEnemiesLeftText();
     }
 
-    public void LevelBeat() {
+    public void LevelBeat()
+    {
         print("LevelBeat has been called");
         gameText.text = levelBeatString;
 
@@ -52,7 +53,8 @@ public class LevelManager : MonoBehaviour
         Invoke("LoadNextLevel", levelBeatInvokeTime);
     }
 
-    public void LevelLost() {
+    public void LevelLost()
+    {
         gameText.text = levelLostString;
 
         gameText.gameObject.SetActive(true);
@@ -72,11 +74,15 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void setEnemiesLeftText() {
-        print("Enemies in level: " + enemiesInLevel);
-        if(enemiesInLevel < 0) {
+    void setEnemiesLeftText()
+    {
+        // print("Enemies in level: " + enemiesInLevel);
+        if (enemiesInLevel < 0)
+        {
             enemiesLeftTxt.text = "Enemies Left:  " + 0;
-        } else {
+        }
+        else
+        {
             enemiesLeftTxt.text = "Enemies Left:  " + enemiesInLevel;
         }
     }

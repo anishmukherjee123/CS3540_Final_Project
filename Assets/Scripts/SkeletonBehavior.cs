@@ -10,7 +10,7 @@ public class SkeletonBehavior : MonoBehaviour
     public enum FSM_states
     {
         Patrol,
-        Chase, 
+        Chase,
         Attack
     }
 
@@ -83,15 +83,19 @@ public class SkeletonBehavior : MonoBehaviour
     {
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        switch(state)
+        IsPlayerInClearFov();
+
+        switch (state)
         {
             case FSM_states.Patrol:
                 UpdatePatrolState();
                 break;
             case FSM_states.Chase:
+                print("Chasing...");
                 UpdateChaseState();
                 break;
             case FSM_states.Attack:
+                print("Attacking...");
                 UpdateAttackState();
                 break;
         }
@@ -105,12 +109,12 @@ public class SkeletonBehavior : MonoBehaviour
 
         agent.stoppingDistance = 2;
 
-        if(Vector3.Distance(transform.position, nextDest) < 2)
+        if (Vector3.Distance(transform.position, nextDest) < 2)
         {
             //Debug.Log("Looks for next point");
             FindNextPoint();
         }
-        else if(IsPlayerInClearFov() && !anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+        else if (IsPlayerInClearFov() && !anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
         {
             //Debug.Log("Sees player");
             state = FSM_states.Chase;
@@ -129,11 +133,11 @@ public class SkeletonBehavior : MonoBehaviour
         nextDest = player.position;
         //Debug.Log("in chase state. NextDest: " + nextDest);
 
-        if(distanceToPlayer <= attackRadius)
+        if (distanceToPlayer <= attackRadius)
         {
             state = FSM_states.Attack;
         }
-        else if(distanceToPlayer > chaseRadius)
+        else if (distanceToPlayer > chaseRadius)
         {
             FindNextPoint();
             state = FSM_states.Patrol;
@@ -152,13 +156,13 @@ public class SkeletonBehavior : MonoBehaviour
         {
             state = FSM_states.Chase;
         }
-        else if(distanceToPlayer > chaseRadius)
+        else if (distanceToPlayer > chaseRadius)
         {
             FindNextPoint();
             state = FSM_states.Patrol;
         }
 
-        if(readyToAttackPlayer)
+        if (readyToAttackPlayer)
         {
             // attack the player
             AttackPlayer(); //change this so it directly damages the player when it attacks, rather than relying on colliders
@@ -179,7 +183,7 @@ public class SkeletonBehavior : MonoBehaviour
     {
         nextDest = wanderPoints[curDestIndex].transform.position;
         curDestIndex = (curDestIndex + 1) % wanderPoints.Count;
-       
+
         agent.SetDestination(nextDest);
     }
 
@@ -202,6 +206,7 @@ public class SkeletonBehavior : MonoBehaviour
 
         if (Vector3.Angle(directionToPlayer, enemyEyes.forward) <= fieldOfView)
         {
+            Debug.DrawRay(enemyEyes.position, directionToPlayer, Color.green, 0.5f);
             if (Physics.Raycast(enemyEyes.position, directionToPlayer, out hit, chaseRadius))
             {
                 if (hit.collider.CompareTag("Player"))
@@ -209,9 +214,17 @@ public class SkeletonBehavior : MonoBehaviour
                     Debug.Log("Player in sight");
                     return true;
                 }
+                else
+                {
+                    print("Raycast not hitting player");
+                }
                 return false;
             }
             return false;
+        }
+        else
+        {
+            print("Player not in FOV");
         }
 
         return false;
@@ -227,6 +240,12 @@ public class SkeletonBehavior : MonoBehaviour
         Debug.DrawLine(enemyEyes.position, frontRayPoint, Color.cyan);
         Debug.DrawLine(enemyEyes.position, leftRayPoint, Color.yellow);
         Debug.DrawLine(enemyEyes.position, rightRayPoint, Color.yellow);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, chaseRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
 
     }
 }
