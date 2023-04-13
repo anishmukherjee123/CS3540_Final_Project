@@ -33,6 +33,15 @@ public class PointAtTarget : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+
+        if(LevelManager.enemiesInLevel > 0) {
+            target = GameObject.FindGameObjectWithTag("Enemy");
+        } else {
+            target = GameObject.FindGameObjectWithTag("LevelEndPt");
+        }
+
+        print("The current target: " + target.name);
+        
         RotateArrow();
     }
 
