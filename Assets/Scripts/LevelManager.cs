@@ -79,7 +79,7 @@ public class LevelManager : MonoBehaviour
 
     void setEnemiesLeftText()
     {
-        print("Enemies in level: " + enemiesInLevel);
+        //print("Enemies in level: " + enemiesInLevel);
         if (enemiesInLevel < 0)
         {
             enemiesLeftTxt.text = "Enemies Left:  " + 0;
