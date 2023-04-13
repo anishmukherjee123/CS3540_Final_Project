@@ -20,6 +20,7 @@ public class ItemSpawner : MonoBehaviour
         Spawn();
     }
 
+
     void Spawn()
     {
         foreach(GameObject spawnPoint in spawnPoints)
