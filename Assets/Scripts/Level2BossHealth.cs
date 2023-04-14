@@ -13,9 +13,12 @@ public class Level2BossHealth : MonoBehaviour
 
     public AudioClip hitSFX;
 
+    private FinalBossBehavior behavior;
+
     private void Awake()
     {
         healthSlider = GetComponentInChildren<Slider>();
+        behavior = FindObjectOfType<FinalBossBehavior>();
     }
 
     void Start()
@@ -26,11 +29,18 @@ public class Level2BossHealth : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        if (currentHealth > 0)
+        if (currentHealth-damageAmount > 0)
         {
             currentHealth -= damageAmount;
             healthSlider.value = currentHealth;
         }
+        else
+        {
+            currentHealth = 0;
+            healthSlider.value = 0;
+            behavior.Die();
+        }
+        
 
     }
 
