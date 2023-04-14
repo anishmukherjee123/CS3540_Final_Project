@@ -50,8 +50,6 @@ public class LevelManager : MonoBehaviour
         gameText.gameObject.SetActive(true);
 
         Invoke("LoadNextLevel", levelBeatInvokeTime);
-
-        setEnemiesLeftText();
     }
 
     public void LevelLost()
@@ -61,8 +59,6 @@ public class LevelManager : MonoBehaviour
         gameText.gameObject.SetActive(true);
 
         Invoke(nameof(LoadCurrentLevel), levelLostInvokeTime);
-
-        setEnemiesLeftText();
     }
 
 

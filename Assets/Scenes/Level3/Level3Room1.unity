@@ -1508,18 +1508,6 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4474263028932525269, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4.925001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4474263028932525269, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.2673
-      objectReference: {fileID: 0}
-    - target: {fileID: 4474263028932525269, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.1834
-      objectReference: {fileID: 0}
-    - target: {fileID: 4474263028932525269, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 115.36
       objectReference: {fileID: 0}
@@ -1564,33 +1552,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 958605367}
     - target: {fileID: 5000844196804934696, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
-      propertyPath: nextLevel
-      value: Level3Room2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5000844196804934696, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
       propertyPath: enemiesLeftTxt
       value: 
       objectReference: {fileID: 1516918996}
-    - target: {fileID: 5000844196804934696, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
-      propertyPath: levelBeatString
-      value: Proceed to the next level!
-      objectReference: {fileID: 0}
-    - target: {fileID: 5000844196804934696, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
-      propertyPath: levelLostString
-      value: You died...Try again
-      objectReference: {fileID: 0}
-    - target: {fileID: 5000844196804934696, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
-      propertyPath: levelBeatInvokeTime
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5000844196804934696, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
-      propertyPath: levelLostInvokeTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5329104887980431378, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6196639345754490953, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
       propertyPath: m_Name
       value: LevelManager
