@@ -42,6 +42,19 @@ public class LevelManager : MonoBehaviour
         setEnemiesLeftText();
     }
 
+    public void setEnemiesLeftText()
+    {
+        //print("Enemies in level: " + enemiesInLevel);
+        if (enemiesInLevel < 0)
+        {
+            enemiesLeftTxt.text = "Enemies Left:  " + 0;
+        }
+        else
+        {
+            enemiesLeftTxt.text = "Enemies Left:  " + enemiesInLevel;
+        }
+    }
+
     public void LevelBeat()
     {
         print("LevelBeat has been called");
@@ -62,6 +75,8 @@ public class LevelManager : MonoBehaviour
     }
 
 
+
+
     void LoadNextLevel()
     {
         print("LoadNextLevel called with: " + nextLevel);
@@ -73,18 +88,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void setEnemiesLeftText()
-    {
-        //print("Enemies in level: " + enemiesInLevel);
-        if (enemiesInLevel < 0)
-        {
-            enemiesLeftTxt.text = "Enemies Left:  " + 0;
-        }
-        else
-        {
-            enemiesLeftTxt.text = "Enemies Left:  " + enemiesInLevel;
-        }
-    }
+
 
     // private void OnTriggerEnter(Collider other)
     // {

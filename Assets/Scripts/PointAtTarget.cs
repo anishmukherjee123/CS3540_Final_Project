@@ -8,8 +8,6 @@ public class PointAtTarget : MonoBehaviour
     public GameObject target;
     public float rotationSpd = 1f;
 
-    KeyCode activateArrow;
-
     GameObject[] enemies;
 
     bool isToggled = false;
@@ -26,17 +24,8 @@ public class PointAtTarget : MonoBehaviour
         }
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        activateArrow = KeyCode.X;
     }
     void Update () {
-        if(Input.GetKey(activateArrow)) {
-            isToggled = true;
-            if(isToggled) {
-                gameObject.SetActive(true);
-            } else {
-                gameObject.SetActive(false);
-            }
-        }
 
         if(LevelManager.enemiesInLevel > 0) {
             findClosestEnemy();
