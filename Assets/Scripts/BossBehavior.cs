@@ -9,6 +9,7 @@ public class BossBehavior : MonoBehaviour
     public int damageAmount = 20;
     public Animator anim;
     public AudioClip deadSFX;
+    public AudioClip attackSFX;
 
     GameObject[] wanderPoints;
     Vector3 nextDestination;
@@ -39,6 +40,8 @@ public class BossBehavior : MonoBehaviour
 
         //will switch the attack turn throughout the level
         InvokeRepeating("SwitchTurn", 8, 5);
+
+        InvokeRepeating("PlayAudio", 0, 3);
     }
 
 
@@ -47,6 +50,7 @@ public class BossBehavior : MonoBehaviour
 
         if (attackTurn)
         {
+            //AudioSource.PlayClipAtPoint(attackSFX, Camera.main.transform.position);
 
             anim.SetInteger("animState", 1);
 
@@ -127,5 +131,13 @@ public class BossBehavior : MonoBehaviour
         }
         anim.SetInteger("animState", 2);
         Destroy(gameObject, 2);
+    }
+
+    void PlayAudio()
+    {
+        if(attackTurn)
+        {
+            AudioSource.PlayClipAtPoint(attackSFX, Camera.main.transform.position);
+        }
     }
 }

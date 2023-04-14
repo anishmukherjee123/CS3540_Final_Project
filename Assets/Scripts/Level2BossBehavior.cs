@@ -10,6 +10,8 @@ public class Level2BossBehavior : MonoBehaviour
     public float minDistance = 0;
     public int damageAmount = 20;
     public Animator anim;
+    public AudioClip deadSFX;
+    public AudioClip attackSFX;
 
     GameObject[] wanderPoints;
     Vector3 nextDestination;
@@ -37,6 +39,8 @@ public class Level2BossBehavior : MonoBehaviour
 
         //will switch the attack turn throughout the level
         InvokeRepeating("SwitchTurn", 2, 5);
+
+        InvokeRepeating("PlayAudio", 0, 3);
     }
 
 
@@ -121,5 +125,13 @@ public class Level2BossBehavior : MonoBehaviour
     {
         anim.SetInteger("animState", 2);
         Destroy(gameObject, 2);
+    }
+
+    void PlayAudio()
+    {
+        if (attackTurn)
+        {
+            AudioSource.PlayClipAtPoint(attackSFX, Camera.main.transform.position);
+        }
     }
 }
