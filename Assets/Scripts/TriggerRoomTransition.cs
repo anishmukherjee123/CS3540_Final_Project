@@ -7,9 +7,6 @@ public class TriggerRoomTransition : MonoBehaviour
     public AudioClip wallDestroyedSFX;
     public AudioClip wallCrackSFX;
     public GameObject player;
-
-    public GameObject arrow;
-
     public float maxDistance = 50f;
 
     public float lightIntensity = 10f;
@@ -110,7 +107,5 @@ public class TriggerRoomTransition : MonoBehaviour
         {
             eachLight.intensity = lightIntensity;
         }
-
-        arrow.SetActive(true);
     }
 }

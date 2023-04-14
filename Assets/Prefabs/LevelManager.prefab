@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 6196639345754490953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 73.17999, y: 108.16, z: 40}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4.925001, y: 2.2673, z: 2.1834}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -45,13 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764258c72dc4c4566b1faf4b9604c413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameText: {fileID: 2310211738575834062, guid: 678c722d0c2dc664d9d0a4769e339d93, type: 3}
-  enemiesLeftTxt: {fileID: 1202465008723507512, guid: 29dc17a5896dc2c4b88b7b59e60ad859, type: 3}
-  levelBeatString: 
-  levelLostString: 
-  nextLevel: Room2
+  gameText: {fileID: 0}
+  enemiesLeftTxt: {fileID: 0}
+  levelBeatString: Proceed to the next level!
+  levelLostString: You died...Try again
+  nextLevel: Level3Room2
   levelBeatInvokeTime: 1
-  levelLostInvokeTime: 1
+  levelLostInvokeTime: 2
 --- !u!65 &5329104887980431378
 BoxCollider:
   m_ObjectHideFlags: 0

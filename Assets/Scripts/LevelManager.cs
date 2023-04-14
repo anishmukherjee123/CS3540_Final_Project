@@ -17,12 +17,11 @@ public class LevelManager : MonoBehaviour
     public float levelBeatInvokeTime = 1f;
     public float levelLostInvokeTime = 1f;
 
-    float maxEnemies;
     // Start is called before the first frame update
     void Start()
     {
         enemiesInLevel = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        maxEnemies = enemiesInLevel;
+        setEnemiesLeftText();
     }
 
     // Update is called once per frame
@@ -41,6 +40,19 @@ public class LevelManager : MonoBehaviour
         }
 
         setEnemiesLeftText();
+    }
+
+    public void setEnemiesLeftText()
+    {
+        //print("Enemies in level: " + enemiesInLevel);
+        if (enemiesInLevel < 0)
+        {
+            enemiesLeftTxt.text = "Enemies Left:  " + 0;
+        }
+        else
+        {
+            enemiesLeftTxt.text = "Enemies Left:  " + enemiesInLevel;
+        }
     }
 
     public void LevelBeat()
@@ -63,6 +75,8 @@ public class LevelManager : MonoBehaviour
     }
 
 
+
+
     void LoadNextLevel()
     {
         print("LoadNextLevel called with: " + nextLevel);
@@ -74,18 +88,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void setEnemiesLeftText()
-    {
-        print("Enemies in level: " + enemiesInLevel);
-        if (enemiesInLevel < 0)
-        {
-            enemiesLeftTxt.text = "Enemies Left:  " + 0;
-        }
-        else
-        {
-            enemiesLeftTxt.text = "Enemies Left:  " + enemiesInLevel;
-        }
-    }
+
 
     // private void OnTriggerEnter(Collider other)
     // {
