@@ -13,25 +13,26 @@ public class PointAtTarget : MonoBehaviour
     bool isToggled = false;
 
     void Start() {
+        // if(target == null) {
+        //     findClosestEnemy();
+        // }
+
         if(target == null) {
-            findClosestEnemy();
+            target = GameObject.FindGameObjectWithTag("LevelEndPt"); 
         }
 
-        if(SceneManager.GetActiveScene().name.Contains("Boss")) {
-            gameObject.SetActive(false);
-        } else {
-            gameObject.SetActive(true);
-        }
 
+        activateArrow();
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
     void Update () {
-
-        if(LevelManager.enemiesInLevel > 0) {
-            findClosestEnemy();
-        } else {
+        activateArrow();
+        
+        //if(LevelManager.enemiesInLevel > 0) {
+          //  findClosestEnemy();
+        //} else {
             target = GameObject.FindGameObjectWithTag("LevelEndPt");
-        }
+        //}
 
         print("The current target: " + target.name);
         
@@ -39,11 +40,13 @@ public class PointAtTarget : MonoBehaviour
     }
 
     void RotateArrow() {
-        Vector3 direction = target.transform.position - transform.position;
-        float angle = Vector3.Angle(transform.forward, direction);
-        Vector3 axis = Vector3.Cross(transform.forward, direction);
-        Quaternion rotation = Quaternion.AngleAxis(angle, axis);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpd * Time.deltaTime);
+        // Vector3 direction = target.transform.position - transform.position;
+        // direction.y = 0f; // set y-component to 0 to only rotate in forward direction
+        // Quaternion rotation = Quaternion.LookRotation(direction);
+        // transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpd * Time.deltaTime);
+        Vector3 targetDirection = target.transform.position - transform.position;
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationSpd * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
     }
 
     void findClosestEnemy() {
@@ -58,5 +61,13 @@ public class PointAtTarget : MonoBehaviour
         }
 
         target = targetEnemy;
+    }
+
+    void activateArrow() {
+        if(SceneManager.GetActiveScene().name.Contains("Boss")) {
+            gameObject.SetActive(false);
+        } else {
+            gameObject.SetActive(true);
+        }
     }
 }
