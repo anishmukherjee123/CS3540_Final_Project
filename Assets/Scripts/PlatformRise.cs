@@ -1,5 +1,7 @@
+using GLTFast.Schema;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlatformRise : MonoBehaviour
@@ -19,10 +21,16 @@ public class PlatformRise : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(active && !hasPlayer)
+        {
+            Vector3 newPos = transform.position;
+            newPos.x = startPos.x + Mathf.Sin(Time.time * 5) * .2f;
+            transform.position = newPos;
+        }
+
         float step = moveSpeed * Time.deltaTime;
         if (hasPlayer)
         {
-            
             transform.position = Vector3.MoveTowards(transform.position, endPos.position, step);
         }
         else if(!hasPlayer && transform.position.y > startPos.y)

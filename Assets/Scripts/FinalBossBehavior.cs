@@ -96,6 +96,7 @@ public class FinalBossBehavior : MonoBehaviour
 
     public void Die()
     {
+        started = false;
         anim.SetTrigger("Dead");
         Destroy(gameObject, 6f);
     }

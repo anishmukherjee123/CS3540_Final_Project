@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     [Header("Animations")]
     public Animator animator;
 
+    GameObject hook;
+
     public enum MovementState
     {
         walking,
@@ -65,6 +67,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animState = AnimState.Idle;
+
+        hook = GameObject.Find("Hook");
 
         readyToJump = true;
         readyToAttack = true;
@@ -233,6 +237,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
+        hook.GetComponent<MeshCollider>().enabled = true;
         animState = AnimState.Attack;
     }
 
@@ -243,6 +248,7 @@ public class PlayerController : MonoBehaviour
 
     private void ResetAttack()
     {
+        hook.GetComponent<MeshCollider>().enabled = false;
         readyToAttack = true;
     }
 }
