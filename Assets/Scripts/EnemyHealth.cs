@@ -47,12 +47,7 @@ public class EnemyHealth : MonoBehaviour
         AudioSource.PlayClipAtPoint(deathSFX, transform.position);
         anim.SetInteger("animState", 4);
         LevelManager.enemiesInLevel--;
-        FindObjectOfType<LevelManager>().setEnemiesLeftText();
         Destroy(gameObject, 2.25f);
-    }
-
-    void OnDestroy() {
-        FindObjectOfType<LevelManager>().setEnemiesLeftText();
     }
 
     void OnTriggerEnter(Collider obj)
