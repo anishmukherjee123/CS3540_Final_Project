@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         enemiesInLevel = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        print("The enemies in the level: " + enemiesInLevel);
         setEnemiesLeftText();
     }
 
@@ -45,14 +46,14 @@ public class LevelManager : MonoBehaviour
     public void setEnemiesLeftText()
     {
         //print("Enemies in level: " + enemiesInLevel);
-        if (enemiesInLevel < 0)
-        {
-            enemiesLeftTxt.text = "Enemies Left:  " + 0;
-        }
-        else
-        {
-            enemiesLeftTxt.text = "Enemies Left:  " + enemiesInLevel;
-        }
+        //if (enemiesInLevel < 0)
+        //{
+           // enemiesLeftTxt.text = "Enemies Left:  " + 0;
+        //}
+        //else
+        //{
+            enemiesLeftTxt.text = "Enemies Left:  " + enemiesInLevel.ToString();
+        //}
     }
 
     public void LevelBeat()
@@ -88,13 +89,4 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag("Player") && enemiesInLevel == 0)
-    //     {
-    //         LoadNextLevel();
-    //     }
-    // }
 }
