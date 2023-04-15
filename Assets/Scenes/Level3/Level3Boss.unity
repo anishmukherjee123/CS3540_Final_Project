@@ -7320,7 +7320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTime: 10
-  attackRate: 5
+  attackRate: 1
   restTime: 5
   bulletAmount: 15
   bulletPrefab: {fileID: 4552009572745866695, guid: 366ac9d4410b5284c96563d4299bfa09, type: 3}
