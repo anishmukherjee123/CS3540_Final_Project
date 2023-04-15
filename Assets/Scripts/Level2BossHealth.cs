@@ -33,11 +33,13 @@ public class Level2BossHealth : MonoBehaviour
         {
             currentHealth -= damageAmount;
             healthSlider.value = currentHealth;
+            Debug.Log("Boss hit");
         }
         else
         {
             currentHealth = 0;
             healthSlider.value = 0;
+            Debug.Log("Boss dead");
             behavior.Die();
         }
         
@@ -52,4 +54,13 @@ public class Level2BossHealth : MonoBehaviour
             TakeDamage(10);
         }
     }
+
+/*    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerWeapon"))
+        {
+            AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position);
+            TakeDamage(10);
+        }
+    }*/
 }

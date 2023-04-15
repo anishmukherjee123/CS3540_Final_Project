@@ -13,6 +13,9 @@ public class FinalBossBehavior : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject bulletParent;
 
+    public GameObject pillar;
+    public GameObject platform;
+
     float startTime = 0f;
 
     bool shooting = false;
@@ -20,9 +23,14 @@ public class FinalBossBehavior : MonoBehaviour
 
     float shootTimer = 0f;
     float restTimer = 0f;
+
+    float startAngle = 0;
+
+    Animator anim;
     void Start()
     {
         Debug.Log("boss position: " + transform.position);
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -65,7 +73,7 @@ public class FinalBossBehavior : MonoBehaviour
     void FireProjectiles()
     {
         float angleStep = 360 / bulletAmount;
-        float curAngle = 0f;
+        float curAngle = 0f + startAngle;
 
         for(int i = 0; i < bulletAmount; i++)
         {
@@ -78,15 +86,23 @@ public class FinalBossBehavior : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, bulletParent.transform.position, transform.rotation);
             bullet.GetComponent<BulletBehavior>().moveDirection = moveDir;
             bullet.transform.SetParent(bulletParent.transform, true);
-            Debug.Log("bullet " + i + ": X: " + dirX + " Z: " + dirZ + " angle: " + curAngle);
+            //Debug.Log("bullet " + i + ": X: " + dirX + " Z: " + dirZ + " angle: " + curAngle);
 
             curAngle += angleStep;
             
         }
+        startAngle += 5;
     }
 
     public void Die()
     {
+        anim.SetTrigger("Dead");
+        Destroy(gameObject, 6f);
+    }
 
+    private void OnDestroy()
+    {
+        pillar.SetActive(false);
+        platform.GetComponent<PlatformRise>().Activate();
     }
 }
