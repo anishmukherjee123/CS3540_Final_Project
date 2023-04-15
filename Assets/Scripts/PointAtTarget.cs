@@ -40,13 +40,10 @@ public class PointAtTarget : MonoBehaviour
     }
 
     void RotateArrow() {
-        // Vector3 direction = target.transform.position - transform.position;
-        // direction.y = 0f; // set y-component to 0 to only rotate in forward direction
-        // Quaternion rotation = Quaternion.LookRotation(direction);
-        // transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpd * Time.deltaTime);
-        Vector3 targetDirection = target.transform.position - transform.position;
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationSpd * Time.deltaTime, 0.0f);
-        transform.rotation = Quaternion.LookRotation(newDirection);
+        Vector3 direction = target.transform.position - transform.position;
+        direction.y = 0f; // set y-component to 0 to only rotate in forward direction
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpd * Time.deltaTime);
     }
 
     void findClosestEnemy() {
