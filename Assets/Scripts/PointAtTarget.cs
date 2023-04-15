@@ -41,6 +41,7 @@ public class PointAtTarget : MonoBehaviour
 
     void RotateArrow() {
         Vector3 direction = target.transform.position - transform.position;
+        direction.y = 0f; // set y-component to 0 to only rotate in forward direction
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpd * Time.deltaTime);
     }

@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         enemiesInLevel = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        print("The enemies in the level: " + enemiesInLevel);
+        //print("The enemies in the level: " + enemiesInLevel);
         setEnemiesLeftText();
     }
 
