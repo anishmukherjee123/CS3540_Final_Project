@@ -2895,6 +2895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   deathSFX: {fileID: 8300000, guid: 95d76afae459e4911bba5142f3e31fd5, type: 3}
+  hitSFX: {fileID: 8300000, guid: 40ffdc26049264d09b14e2f5da145e39, type: 3}
   healthBar: {fileID: 455837794}
   damageCooldown: 0.75
   currentHealth: 0

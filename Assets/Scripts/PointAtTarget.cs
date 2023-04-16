@@ -15,10 +15,12 @@ public class PointAtTarget : MonoBehaviour
 
     GameObject[] enemies;
 
-    void Start() {
+    void Start()
+    {
 
-        if(target == null) {
-            target = GameObject.FindGameObjectWithTag("LevelEndPt"); 
+        if (target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("LevelEndPt");
             //findClosestEnemy();
         }
 
@@ -26,82 +28,22 @@ public class PointAtTarget : MonoBehaviour
         activateArrow();
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
-    void Update () {
-        
+    void Update()
+    {
+
         //if(LevelManager.enemiesInLevel > 0) {
-            //findClosestEnemy();
-        //} else {
-            target = GameObject.FindGameObjectWithTag("LevelEndPt");
-        //}
-
-        Debug.Log("The current target: " + target.name);
-        
-        RotateArrowV3();
+        //findClosestEnemy();
     }
 
-    void RotateArrow() {
-        Vector3 direction = target.transform.position - pivotPt.transform.position;
-
-        direction.y = 0f; // set y-component to 0 to only rotate in forward direction
-
-        Debug.Log("The direction vector: " + direction);
-
-        Quaternion rotation = Quaternion.LookRotation(direction);
-
-        Debug.Log("The rotation of the arrow: " + rotation);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpd * Time.deltaTime);
-    }
-
-    void RotateArrowV2() {
-        if (target != null)
-        {
-            Vector3 direction = (target.transform.position - pivotPt.transform.position).normalized;
-            float angle = Vector3.Angle(transform.forward, -direction); // invert the direction vector
-            Quaternion targetRotation = Quaternion.LookRotation(-direction); // invert the direction vector
-
-            float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-            Debug.Log("Distance to target: " + distanceToTarget);
-            if (angle > 90f && distanceToTarget <= maxDist)
-            {
-                direction = (pivotPt.transform.position - target.transform.position).normalized; // flip the direction vector
-                angle = Vector3.Angle(transform.forward, -direction); // invert the direction vector again
-                targetRotation = Quaternion.LookRotation(-direction); // invert the direction vector again
-            }
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Mathf.Min(maxRotationAngle, angle));
-        }
-    }
-
-    void RotateArndPivot() {
-        Vector3 direction = (target.transform.position - pivotPt.transform.position);
-        Quaternion rotation = Quaternion.LookRotation(-direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpd * Time.deltaTime);
-    }
-
-    void RotateArrowV3() {
-        if (target != null)
-        {
-            // Calculate the direction towards the target
-            Vector3 direction = (target.transform.position - transform.position).normalized;
-
-            // Align the arrow's rotation with the direction line
-            transform.LookAt(target.transform.position);
-
-            // // Rotate the arrow towards the target within the maxRotationAngle
-            // Quaternion targetRotation = Quaternion.LookRotation(direction);
-            // transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, maxRotationAngle * Time.deltaTime);
-        }
-
-
-    }
-
-    void findClosestEnemy() {
+    void findClosestEnemy()
+    {
         float minDistance = Vector3.Distance(gameObject.transform.position, enemies[0].transform.position);
         GameObject targetEnemy = enemies[0];
-        foreach(GameObject eachEnemy in enemies) {
+        foreach (GameObject eachEnemy in enemies)
+        {
             float currentDistance = Vector3.Distance(gameObject.transform.position, eachEnemy.transform.position);
-            if(currentDistance < minDistance && !eachEnemy.GetComponent<EnemyHealth>().dead) {
+            if (currentDistance < minDistance && !eachEnemy.GetComponent<EnemyHealth>().dead)
+            {
                 minDistance = currentDistance;
                 targetEnemy = eachEnemy;
             }
@@ -110,11 +52,15 @@ public class PointAtTarget : MonoBehaviour
         target = targetEnemy;
     }
 
-    void activateArrow() {
-        if(SceneManager.GetActiveScene().name.Contains("Boss")) {
+    void activateArrow()
+    {
+        if (SceneManager.GetActiveScene().name.Contains("Boss"))
+        {
             gameObject.SetActive(false);
             Debug.Log("Arrow should not be visible");
-        } else {
+        }
+        else
+        {
             gameObject.SetActive(true);
             Debug.Log("Arrow should be visible");
         }
