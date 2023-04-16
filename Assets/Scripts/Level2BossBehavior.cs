@@ -38,7 +38,7 @@ public class Level2BossBehavior : MonoBehaviour
         attackTurn = false;
 
         //will switch the attack turn throughout the level
-        InvokeRepeating("SwitchTurn", 2, 5);
+        InvokeRepeating("SwitchTurn", 10, 8);
 
         InvokeRepeating("PlayAudio", 0, 3);
     }
@@ -49,6 +49,7 @@ public class Level2BossBehavior : MonoBehaviour
 
         if (attackTurn)
         {
+            print(player);
 
             float step = moveSpeed * Time.deltaTime;
 
@@ -84,7 +85,7 @@ public class Level2BossBehavior : MonoBehaviour
 
         if (health <= 0)
         {
-            SpiderDeath();
+            BossDeath();
         }
     }
 
@@ -121,7 +122,7 @@ public class Level2BossBehavior : MonoBehaviour
         }
     }
 
-    void SpiderDeath()
+    void BossDeath()
     {
         anim.SetInteger("animState", 2);
         Destroy(gameObject, 2);

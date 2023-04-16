@@ -47,10 +47,8 @@ public class BossBehavior : MonoBehaviour
 
     void Update()
     {
-
         if (attackTurn)
         {
-            //AudioSource.PlayClipAtPoint(attackSFX, Camera.main.transform.position);
 
             anim.SetInteger("animState", 1);
 
@@ -60,7 +58,7 @@ public class BossBehavior : MonoBehaviour
 
             if (distance > minDistance)
             {
-                transform.LookAt(player);
+                transform.LookAt(player.position);
                 transform.position = Vector3.MoveTowards(transform.position, player.position, step);
             }
         }

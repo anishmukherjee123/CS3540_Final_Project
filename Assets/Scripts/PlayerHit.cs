@@ -16,19 +16,19 @@ public class PlayerHit : MonoBehaviour
         damageReady = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnTriggerEnter(Collider col)
     {
         if (damageReady)
         {
             if (col.CompareTag("EnemyWeaponSkeleton"))
             {
-                ph.TakeDamage(skeletonDamage); //remove this call and put it in the attack state of the enemy
+                ph.TakeDamage(skeletonDamage);
+                damageReady = false;
+                Invoke("ResetDamageCooldown", damageCoolDown);
+            }
+            if(col.CompareTag("Projectile"))
+            {
+                ph.TakeDamage(10);
                 damageReady = false;
                 Invoke("ResetDamageCooldown", damageCoolDown);
             }
