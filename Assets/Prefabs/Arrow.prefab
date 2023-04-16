@@ -353,6 +353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   rotationSpd: 30
+  maxRotationAngle: 10
+  maxDist: 50
 --- !u!1 &3644807781065555953
 GameObject:
   m_ObjectHideFlags: 0
