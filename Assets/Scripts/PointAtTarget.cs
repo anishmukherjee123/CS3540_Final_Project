@@ -36,7 +36,7 @@ public class PointAtTarget : MonoBehaviour
 
         Debug.Log("The current target: " + target.name);
         
-        RotateArrowV2();
+        RotateArndPivot();
     }
 
     void RotateArrow() {
