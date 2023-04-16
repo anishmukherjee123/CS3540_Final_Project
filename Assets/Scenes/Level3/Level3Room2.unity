@@ -1574,7 +1574,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.3254902, b: 0.2509804, a: 1}
   m_Intensity: 0
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -10384,7 +10384,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.3254902, b: 0.2509804, a: 1}
   m_Intensity: 0
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -19214,6 +19214,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.000005896234
       objectReference: {fileID: 0}
+    - target: {fileID: 2576313562476462440, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8500671
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313562476462440, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.1013432
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313562476462440, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.4930338
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313562476462440, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.15502623
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313562546355262, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -80.62063
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313562546355262, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -79.89008
+      objectReference: {fileID: 0}
     - target: {fileID: 2576313563589131956, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -19282,6 +19306,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.000005896234
       objectReference: {fileID: 0}
+    - target: {fileID: 2576313564284128537, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8538588
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564284128537, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.061722957
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564284128537, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.48529544
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564284128537, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.17777468
+      objectReference: {fileID: 0}
     - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0000040475784
@@ -19293,6 +19333,22 @@ PrefabInstance:
     - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.000005896234
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8446472
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.1394837
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49950904
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.13268849
       objectReference: {fileID: 0}
     - target: {fileID: 2956296773347160211, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalRotation.w
