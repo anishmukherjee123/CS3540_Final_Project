@@ -50,7 +50,7 @@ public class TriggerRoomTransition : MonoBehaviour
 
         distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
 
-        print("Distance to player before if statement: " + distanceToPlayer);
+        //print("Distance to player before if statement: " + distanceToPlayer);
         //print("Enemies in level: " + enemyCount);
 
         if (distanceToPlayer <= maxDistance && enemyCount <= 0)
