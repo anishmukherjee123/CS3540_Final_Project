@@ -36,7 +36,7 @@ public class PointAtTarget : MonoBehaviour
 
         Debug.Log("The current target: " + target.name);
         
-        RotateArndPivot();
+        RotateArrowV3();
     }
 
     void RotateArrow() {
@@ -83,14 +83,14 @@ public class PointAtTarget : MonoBehaviour
         if (target != null)
         {
             // Calculate the direction towards the target
-            Vector3 direction = (target.transform.position - pivotPt.transform.position).normalized;
+            Vector3 direction = (target.transform.position - transform.position).normalized;
 
             // Align the arrow's rotation with the direction line
-            transform.LookAt(transform.position + direction);
+            transform.LookAt(target.transform.position);
 
-            // Rotate the arrow towards the target within the maxRotationAngle
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, maxRotationAngle * Time.deltaTime);
+            // // Rotate the arrow towards the target within the maxRotationAngle
+            // Quaternion targetRotation = Quaternion.LookRotation(direction);
+            // transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, maxRotationAngle * Time.deltaTime);
         }
 
 
