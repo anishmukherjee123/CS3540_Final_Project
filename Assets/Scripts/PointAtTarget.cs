@@ -46,7 +46,7 @@ public class PointAtTarget : MonoBehaviour
 
         Debug.Log("The direction vector: " + direction);
 
-        Quaternion rotation = Quaternion.LookRotation(-direction);
+        Quaternion rotation = Quaternion.LookRotation(direction);
 
         Debug.Log("The rotation of the arrow: " + rotation);
 
@@ -77,6 +77,23 @@ public class PointAtTarget : MonoBehaviour
         Vector3 direction = (target.transform.position - pivotPt.transform.position);
         Quaternion rotation = Quaternion.LookRotation(-direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpd * Time.deltaTime);
+    }
+
+    void RotateArrowV3() {
+        if (target != null)
+        {
+            // Calculate the direction towards the target
+            Vector3 direction = (target.transform.position - pivotPt.transform.position).normalized;
+
+            // Align the arrow's rotation with the direction line
+            transform.LookAt(transform.position + direction);
+
+            // Rotate the arrow towards the target within the maxRotationAngle
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, maxRotationAngle * Time.deltaTime);
+        }
+
+
     }
 
     void findClosestEnemy() {
