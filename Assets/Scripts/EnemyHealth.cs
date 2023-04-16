@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public int startingHealth = 100;
     public AudioClip deathSFX;
+    public AudioClip hitSFX;
     public Slider healthBar;
     public float damageCooldown = 0.75f;
     bool damageReady = true;
@@ -34,6 +35,7 @@ public class EnemyHealth : MonoBehaviour
         {
             currentHealth -= damageAmount;
             healthBar.value = currentHealth;
+            AudioSource.PlayClipAtPoint(hitSFX, transform.position);
         }
         if (currentHealth <= 0 && !dead)
         {

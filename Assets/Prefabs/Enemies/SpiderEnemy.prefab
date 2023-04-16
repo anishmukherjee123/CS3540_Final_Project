@@ -725,8 +725,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   deathSFX: {fileID: 8300000, guid: 06d90be5d56de4803836b643f3a366f5, type: 3}
+  hitSFX: {fileID: 8300000, guid: 40ffdc26049264d09b14e2f5da145e39, type: 3}
   healthBar: {fileID: 5642598247690007427}
+  damageCooldown: 0.75
   currentHealth: 0
+  dead: 0
 --- !u!195 &5642598247810001099
 NavMeshAgent:
   m_ObjectHideFlags: 0
