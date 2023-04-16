@@ -33,6 +33,14 @@ public class PointAtTarget : MonoBehaviour
 
         //if(LevelManager.enemiesInLevel > 0) {
         //findClosestEnemy();
+        RotateArrow();
+    }
+
+    void RotateArrow() {
+        Vector3 direction = target.transform.position - transform.position;
+
+         Quaternion rotation = Quaternion.LookRotation(direction);
+         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpd * Time.deltaTime);
     }
 
     void findClosestEnemy()
