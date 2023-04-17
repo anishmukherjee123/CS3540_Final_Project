@@ -8898,6 +8898,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Arrow
       objectReference: {fileID: 0}
+    - target: {fileID: 393651595598424743, guid: a354797d36a32b94d956b9624704d05d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3522486259210345591, guid: a354797d36a32b94d956b9624704d05d, type: 3}
       propertyPath: m_Pivot.x
       value: 1

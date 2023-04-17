@@ -6,30 +6,26 @@ using UnityEngine.SceneManagement;
 public class PointAtTarget : MonoBehaviour
 {
     public GameObject target;
-
-    public GameObject pivotPt;
     public float rotationSpd = 1f;
-    public float maxRotationAngle = 10f;
-
-    public float maxDist = 50f;
-
     GameObject[] enemies;
 
     void Start()
     {
-
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (target == null)
         {
-            target = GameObject.FindGameObjectWithTag("LevelEndPt");
-            //findClosestEnemy();
+            //target = GameObject.FindGameObjectWithTag("LevelEndPt");
+            SetTarget();
         }
 
 
         activateArrow();
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+  
     }
     void Update()
-    {
+    {   
+        activateArrow();
+        SetTarget();
         RotateArrowWithLookAt();
     }
 
@@ -48,6 +44,25 @@ public class PointAtTarget : MonoBehaviour
 
     void RotateArrowWithLookAt() {
         transform.LookAt(target.transform.position);
+    }
+
+
+
+    void findClosestEnemy()
+    {
+        float minDistance = Vector3.Distance(gameObject.transform.position, enemies[0].transform.position);
+        GameObject targetEnemy = enemies[0];
+        foreach (GameObject eachEnemy in enemies)
+        {
+            float currentDistance = Vector3.Distance(gameObject.transform.position, eachEnemy.transform.position);
+            if (currentDistance < minDistance && !eachEnemy.GetComponent<EnemyHealth>().dead)
+            {
+                minDistance = currentDistance;
+                targetEnemy = eachEnemy;
+            }
+        }
+
+        target = targetEnemy;
     }
 
     void activateArrow()
@@ -75,6 +90,14 @@ public class PointAtTarget : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(-direction);
             Gizmos.color = Color.green;
             Gizmos.DrawRay(transform.position, targetRotation * Vector3.forward);
+        }
+    }
+
+    void SetTarget() {
+        if(LevelManager.enemiesInLevel <= 0) {
+            target = GameObject.FindGameObjectWithTag("LevelEndPt");
+        } else {
+            findClosestEnemy();
         }
     }
 
