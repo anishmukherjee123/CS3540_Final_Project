@@ -30,9 +30,6 @@ public class PointAtTarget : MonoBehaviour
     }
     void Update()
     {
-
-        //if(LevelManager.enemiesInLevel > 0) {
-        //findClosestEnemy();
         RotateArrowWithLookAt();
     }
 
@@ -50,27 +47,7 @@ public class PointAtTarget : MonoBehaviour
     }
 
     void RotateArrowWithLookAt() {
-        Vector3 direction = target.transform.position - transform.position;
         transform.LookAt(target.transform.position);
-    }
-
-
-
-    void findClosestEnemy()
-    {
-        float minDistance = Vector3.Distance(gameObject.transform.position, enemies[0].transform.position);
-        GameObject targetEnemy = enemies[0];
-        foreach (GameObject eachEnemy in enemies)
-        {
-            float currentDistance = Vector3.Distance(gameObject.transform.position, eachEnemy.transform.position);
-            if (currentDistance < minDistance && !eachEnemy.GetComponent<EnemyHealth>().dead)
-            {
-                minDistance = currentDistance;
-                targetEnemy = eachEnemy;
-            }
-        }
-
-        target = targetEnemy;
     }
 
     void activateArrow()
