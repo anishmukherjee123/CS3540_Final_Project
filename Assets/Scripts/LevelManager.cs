@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviour
     public float levelBeatInvokeTime = 1f;
     public float levelLostInvokeTime = 1f;
 
+    public bool lastLevel = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,8 +64,10 @@ public class LevelManager : MonoBehaviour
         gameText.text = levelBeatString;
 
         gameText.gameObject.SetActive(true);
-
-        Invoke("LoadNextLevel", levelBeatInvokeTime);
+        if (!lastLevel)
+        {
+            Invoke("LoadNextLevel", levelBeatInvokeTime);
+        }
     }
 
     public void LevelLost()
