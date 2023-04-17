@@ -39,6 +39,7 @@ public class FinalBossBehavior : MonoBehaviour
         if (started)
         {
             float curTime = Time.time - startTime;
+
             if (shooting)
             {
                 shootTimer += Time.deltaTime;
@@ -96,6 +97,7 @@ public class FinalBossBehavior : MonoBehaviour
 
     public void Die()
     {
+        CancelInvoke();
         started = false;
         anim.SetTrigger("Dead");
         Destroy(gameObject, 6f);
