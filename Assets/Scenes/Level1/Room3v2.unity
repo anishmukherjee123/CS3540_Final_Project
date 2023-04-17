@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.13492846, g: 0.14825267, b: 0.16133204, a: 1}
+  m_IndirectSpecularColor: {r: 0.13471615, g: 0.14837316, b: 0.16128165, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -23996,7 +23996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2576313564284128537, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9129172
+      value: -0.91291714
       objectReference: {fileID: 0}
     - target: {fileID: 2576313564284128537, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalRotation.z
@@ -24020,7 +24020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.03858993
+      value: 0.03858992
       objectReference: {fileID: 0}
     - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalRotation.y
@@ -24028,7 +24028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2490191
+      value: 0.24901912
       objectReference: {fileID: 0}
     - target: {fileID: 2576313564402562620, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: overlay
@@ -28384,7 +28384,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.047631975, y: -0.000000008095863, z: 3.8606013e-10, w: 0.99886495}
+  m_LocalRotation: {x: 0.047631983, y: -0.0000000031871257, z: 1.5198164e-10, w: 0.99886495}
   m_LocalPosition: {x: -49.16301, y: -59.126347, z: -24.02089}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -76490,7 +76490,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh182320
+  m_Name: pb_Mesh61270
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
