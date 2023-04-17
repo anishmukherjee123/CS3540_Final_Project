@@ -84,6 +84,7 @@ public class Level2BossBehavior : MonoBehaviour
         if (health <= 0)
         {
             BossDeath();
+            FindObjectOfType<LevelManager>().LevelBeat();
         }
     }
 
