@@ -146,8 +146,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Enemies Left:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0a68c0735daaf41c2a51cb6317046a78, type: 2}
-  m_sharedMaterial: {fileID: 4365371848231559219, guid: 0a68c0735daaf41c2a51cb6317046a78, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4abb8b6947a0349d9b5f69d7ebce9a69, type: 2}
+  m_sharedMaterial: {fileID: 6114363685516279781, guid: 4abb8b6947a0349d9b5f69d7ebce9a69, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -171,8 +171,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

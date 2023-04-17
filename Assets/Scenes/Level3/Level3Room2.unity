@@ -21874,6 +21874,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8639387274187017665, guid: 91af640f7fcf344f7a055b49f74acd5e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1745516360}
+    - target: {fileID: 8639387274187017665, guid: 91af640f7fcf344f7a055b49f74acd5e, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1869926596}
     - target: {fileID: 9064744142105296404, guid: 91af640f7fcf344f7a055b49f74acd5e, type: 3}
       propertyPath: m_Name
       value: DefaultCanvas
@@ -23234,6 +23242,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1745516360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2576313564402562612, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+  m_PrefabInstance: {fileID: 1531002093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1747245885
 PrefabInstance:
   m_ObjectHideFlags: 0
