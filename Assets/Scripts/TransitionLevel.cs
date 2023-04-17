@@ -9,28 +9,36 @@ public class TransitionLevel : MonoBehaviour
     bool dead = false;
     int bossHealth = 100;
 
-    void Start() {
-        if(SceneManager.GetActiveScene().name.Contains("Level2")) {
-            bossHealth = Level2BossHealth.currentHealth;
-            Debug.Log("this is level2 boss");
-        } else {
-            bossHealth = BossHealth.currentHealth;
-            Debug.Log("this is level1 boss");
-        }
+    void Start()
+    {
+        UpdateHealth();
     }
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("The boss's current health: " + bossHealth);
-        if(bossHealth <= 0 && !dead) {
+        UpdateHealth();
+        print("The boss's current health: " + bossHealth);
+        if (bossHealth <= 0 && !dead)
+        {
             LevelManager.enemiesInLevel--;
             dead = true;
-            Debug.Log("Boss is dead");
         }
-        
-        if(LevelManager.enemiesInLevel <= 0 || dead) {
-            Debug.Log("Next level called");
+
+        if (LevelManager.enemiesInLevel <= 0)
+        {
             GameObject.FindObjectOfType<LevelManager>().LevelBeat();
+        }
+    }
+
+    void UpdateHealth()
+    {
+        if (SceneManager.GetActiveScene().name.Contains("Level2"))
+        {
+            bossHealth = Level2BossHealth.currentHealth;
+        }
+        else
+        {
+            bossHealth = BossHealth.currentHealth;
         }
     }
 }

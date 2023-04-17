@@ -2881,6 +2881,9 @@ MonoBehaviour:
   wanderPointParent: {fileID: 0}
   enemyEyes: {fileID: 53355571745688856}
   fieldOfView: 100
+  weapons:
+  - {fileID: 2567451769746176027}
+  - {fileID: 6643564120719196381}
 --- !u!114 &-358402974853276835
 MonoBehaviour:
   m_ObjectHideFlags: 0

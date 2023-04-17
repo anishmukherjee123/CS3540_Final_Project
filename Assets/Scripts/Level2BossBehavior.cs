@@ -27,7 +27,7 @@ public class Level2BossBehavior : MonoBehaviour
         //set the wander points, get the animator and set it to walking
         wanderPoints = GameObject.FindGameObjectsWithTag("WanderPoint");
         anim = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
         currentDestinationIndex = 0;
 
         Level2BossHealth = GetComponent<Level2BossHealth>();
@@ -38,9 +38,9 @@ public class Level2BossBehavior : MonoBehaviour
         attackTurn = false;
 
         //will switch the attack turn throughout the level
-        InvokeRepeating("SwitchTurn", 10, 8);
+        InvokeRepeating("SwitchTurn", 5, 5);
 
-        InvokeRepeating("PlayAudio", 0, 3);
+        InvokeRepeating("PlayAudio", 0, 5);
     }
 
 
@@ -49,8 +49,6 @@ public class Level2BossBehavior : MonoBehaviour
 
         if (attackTurn)
         {
-            print(player);
-
             float step = moveSpeed * Time.deltaTime;
 
             float distance = Vector3.Distance(transform.position, player.position);
@@ -108,9 +106,7 @@ public class Level2BossBehavior : MonoBehaviour
     {
         nextDestination = wanderPoints[currentDestinationIndex].transform.position;
 
-        print("Next destination: " + wanderPoints[currentDestinationIndex].gameObject.name);
-
-        currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
+        currentDestinationIndex = (currentDestinationIndex + 1) % (wanderPoints.Length - 1);
     }
 
     private void OnTriggerEnter(Collider other)
