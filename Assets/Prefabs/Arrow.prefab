@@ -250,7 +250,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 184
+  m_VersionIndex: 199
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -327,7 +327,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3644807780458120751}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: fd6a02b5660afc042bf108b5435a0fc0, type: 2}
   m_CullingMode: 0
@@ -346,13 +346,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3644807780458120751}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2d05319c583a5f4babe30994de0b132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  rotationSpd: 30
+  pivotPt: {fileID: 0}
+  rotationSpd: 15
   maxRotationAngle: 10
   maxDist: 50
 --- !u!1 &3644807781065555953
@@ -565,7 +566,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 368
+  m_VersionIndex: 383
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
