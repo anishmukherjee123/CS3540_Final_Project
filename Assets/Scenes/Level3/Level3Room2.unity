@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 82b660520bdecce4daf45d270ec93fe4, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.13513187, g: 0.14836773, b: 0.1614475, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19467,6 +19467,10 @@ PrefabInstance:
       value: -0.000005896234
       objectReference: {fileID: 0}
     - target: {fileID: 2576313562476462440, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8500671
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313562476462440, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.10134319
       objectReference: {fileID: 0}
@@ -19597,6 +19601,14 @@ PrefabInstance:
     - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.13948372
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49950904
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576313564376981622, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.13268849
       objectReference: {fileID: 0}
     - target: {fileID: 2576313564402562620, guid: 4b5245faae5854098ba5909103dc42e7, type: 3}
       propertyPath: overlay
@@ -20066,6 +20078,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1561847653 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8345321717305462954, guid: 91af640f7fcf344f7a055b49f74acd5e, type: 3}
+  m_PrefabInstance: {fileID: 1561847648}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1561847654 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6398849548816769261, guid: 91af640f7fcf344f7a055b49f74acd5e, type: 3}
+  m_PrefabInstance: {fileID: 1561847648}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1564356833
 GameObject:
   m_ObjectHideFlags: 0
@@ -20155,7 +20189,7 @@ PrefabInstance:
     - target: {fileID: 5000844196804934696, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
       propertyPath: gameText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1561847654}
     - target: {fileID: 5000844196804934696, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
       propertyPath: nextLevel
       value: Level3Boss
@@ -20163,7 +20197,7 @@ PrefabInstance:
     - target: {fileID: 5000844196804934696, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
       propertyPath: enemiesLeftTxt
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1561847653}
     - target: {fileID: 6196639345754490953, guid: 810106b0d8bd848a59bba4ebb4aab42b, type: 3}
       propertyPath: m_Name
       value: LevelManager

@@ -27,6 +27,8 @@ public class SkeletonBehavior : MonoBehaviour
     public Transform enemyEyes;
     public float fieldOfView = 45;
 
+    public Collider[] weapons;
+
     Animator anim;
 
     bool readyToAttackPlayer;
@@ -83,6 +85,15 @@ public class SkeletonBehavior : MonoBehaviour
     {
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
+        if (readyToAttackPlayer)
+        {
+            UpdateColliders(false);
+        }
+        else
+        {
+            UpdateColliders(true);
+        }
+
         if (!GetComponent<EnemyHealth>().dead)
         {
             switch (state)
@@ -100,6 +111,21 @@ public class SkeletonBehavior : MonoBehaviour
         }
         elapsedTime += Time.deltaTime;
 
+    }
+
+    void UpdateColliders(bool flag)
+    {
+        foreach (Collider col in weapons)
+        {
+            if (flag)
+            {
+                col.enabled = true;
+            }
+            else
+            {
+                col.enabled = false;
+            }
+        }
     }
 
     void UpdatePatrolState()
@@ -164,8 +190,8 @@ public class SkeletonBehavior : MonoBehaviour
         if (readyToAttackPlayer)
         {
             // attack the player
-            AttackPlayer(); //change this so it directly damages the player when it attacks, rather than relying on colliders
             readyToAttackPlayer = false;
+            AttackPlayer();
             Invoke(nameof(ResetAttackCooldown), attackCooldown);
         }
     }
