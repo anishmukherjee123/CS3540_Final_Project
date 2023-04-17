@@ -3303,10 +3303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  pivotPt: {fileID: 5469317148628187724}
   rotationSpd: 25
-  maxRotationAngle: 10
-  maxDist: 50
 --- !u!1 &5651993839926235286
 GameObject:
   m_ObjectHideFlags: 0
@@ -7208,10 +7205,6 @@ PrefabInstance:
     - target: {fileID: 3644807780458120751, guid: 6f67ed16298694040864a75d50c7a7ef, type: 3}
       propertyPath: m_Name
       value: Arrow
-      objectReference: {fileID: 0}
-    - target: {fileID: 3644807780458120751, guid: 6f67ed16298694040864a75d50c7a7ef, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3644807781065554957, guid: 6f67ed16298694040864a75d50c7a7ef, type: 3}
       propertyPath: m_Mesh

@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
         //}
         //else
         //{
-            enemiesLeftTxt.text = "Enemies Left:  " + enemiesInLevel.ToString();
+            enemiesLeftTxt.text = "Enemies Left: " + enemiesInLevel.ToString();
         //}
     }
 

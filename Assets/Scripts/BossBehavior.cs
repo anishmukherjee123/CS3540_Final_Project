@@ -85,6 +85,7 @@ public class BossBehavior : MonoBehaviour
         if (health <= 0)
         {
             SpiderDeath();
+            FindObjectOfType<LevelManager>().LevelBeat();
         }
     }
 
