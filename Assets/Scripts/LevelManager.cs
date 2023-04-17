@@ -47,15 +47,44 @@ public class LevelManager : MonoBehaviour
 
     public void setEnemiesLeftText()
     {
-        //print("Enemies in level: " + enemiesInLevel);
-        //if (enemiesInLevel < 0)
-        //{
-           // enemiesLeftTxt.text = "Enemies Left:  " + 0;
-        //}
-        //else
-        //{
-            enemiesLeftTxt.text = "Enemies Left:  " + enemiesInLevel.ToString();
-        //}
+        // get a word version
+        string enemyWord = "";
+        switch (enemiesInLevel)
+        {
+            case 0:
+                enemyWord = "None";
+                break;
+            case 1:
+                enemyWord = "One";
+                break;
+            case 2:
+                enemyWord = "Two";
+                break;
+            case 3:
+                enemyWord = "Three";
+                break;
+            case 4:
+                enemyWord = "Four";
+                break;
+            case 5:
+                enemyWord = "Five";
+                break;
+            case 6:
+                enemyWord = "Six";
+                break;
+            case 7:
+                enemyWord = "Seven";
+                break;
+            case 8:
+                enemyWord = "Eight";
+                break;
+            case 9:
+                enemyWord = "Nine";
+                break;
+            default:
+                break;
+        }
+        enemiesLeftTxt.text = "Enemies Left:  " + enemyWord;
     }
 
     public void LevelBeat()
